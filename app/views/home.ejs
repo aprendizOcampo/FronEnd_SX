@@ -1,0 +1,25 @@
+<!--Pagina de inicio, consta de 2 botones, texto y una imagen (el logo de la aplicación)-->
+
+<%-include("./partials/dashheaderL.ejs")%>
+
+  <body class="p-3 mb-2 bg-light text-dark">
+    <div class="position-absolute top-50 start-50 translate-middle">
+      <div class="text-center">
+        <img src="img/200px.png" class="img-fluid">
+        <h1>SINVEX</h1>
+      </div>
+
+      <div class="text-center">
+        <h5 class="text-secondary"> <em>Tu inventario</em></h5>
+        <p class="text-muted"> Inicia sesión para poder acceder a la aplicación</p>
+      </div>
+
+      <div class="container-sm text-center">
+        <a class="btn btn-primary" href="/login" role="button">Ingresar como administrador</a>
+        <a class="btn btn-primary" href="/vendedor/login-vendedor" role="button">Ingresar como vendedor</a>
+      </div>
+    </div>
+
+  </body>
+
+  </html>

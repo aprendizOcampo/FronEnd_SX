@@ -1,0 +1,50 @@
+<!-- Pagina para ver los reportes de los usuarios vendedores-->
+
+<html>
+<%- include('partials/dashmenu.ejs'); %>
+
+  <body class="hold-transition skin-blue sidebar-mini">
+    <!-- Site wrapper -->
+    <div class="content-wrapper">
+      <!-- Content Header (Page header) -->
+      <%- include('partials/dashhead.ejs'); %>
+
+        <div class="box">
+          <div class="box-header with-border">
+            <h3>Alertas del inventario </h3>
+            <h4 class="text-muted">Aquí se muestran las alertas recientes</h4>
+          </div>
+          <!-- Reporte del mes del usuario -->
+          <div class="col-md-4">
+            <div class="panel panel-primary">
+              <div class="panel-body">
+                <div class="text-center">
+                  <h3> Alerta de productos sin stock </h3>
+                </div>
+                <div class="text-center">
+                  <p>El producto X se encuentra sin stock</p>
+                  <a type="button" href="/administrador/inventario"><i class="fa fa-arrow-right btn btn-primary"> Ir </i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row"></div>
+        </div>
+        <!-- jQuery 3 -->
+        <script src="v1/../bower_components/jquery/dist/jquery.min.js"></script>
+        <!-- Bootstrap 3.3.7 -->
+        <script src="v1/../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+        <!-- SlimScroll -->
+        <script src="v1/../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+        <!-- FastClick -->
+        <script src="v1/../bower_components/fastclick/lib/fastclick.js"></script>
+        <!-- AdminLTE App -->
+        <script src="v1/../dist/js/adminlte.min.js"></script>
+        <!-- AdminLTE for demo purposes -->
+        <script src="v1/../dist/js/demo.js"></script>
+    </div>
+    <%- include('partials/dashfooter.ejs'); %>
+      </script>
+  </body>
+
+</html>

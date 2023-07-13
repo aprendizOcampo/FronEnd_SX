@@ -1,0 +1,82 @@
+<!--Pagina para modificar contactos de los proveedores-->
+
+<html>
+<%- include('partials/dashmenu.ejs'); %>
+
+  <body class="hold-transition skin-blue sidebar-mini">
+    <!-- Site wrapper -->
+    <div class="content-wrapper">
+      <!-- Content Header (Page header) -->
+      <%- include('partials/dashhead.ejs'); %>
+
+
+        <div class="box">
+          <div class="box-header with-border">
+            <h3>Modificar contactos de los proveedores</h3>
+            <h4 class="text-muted">Aquí puedes modificar los datos que necesites de tus contactos</h4>
+          </div>
+          <form action="/administrador/saveContacto" method="post">
+            <div>
+              <!--Tabla con los inputs-->
+              <table id="" class="table table-bordered table-striped">
+                <thead>
+                  <tr>
+                    <th>NOMBRE</th>
+                    <th>CORREO</th>
+                    <th>TELEFONO</th>
+                    <th>DIRECCIÓN</th>
+                    <th>WEB</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><input type="text" name="nombre" class="form-control" id="bProducto"
+                        value="<%= contacto[0].nombre %>" placeholder="Escriba el nombre de su contacto"></td>
+                    <td><input type="email" name="email" class="form-control" id="bProducto"
+                        value="<%= contacto[0].email %>" placeholder="Escriba el correo de su contacto"></td>
+                    <td><input type="number" name="telefono" class="form-control" id="bProducto"
+                        value="<%= contacto[0].telefono %>" placeholder="Escriba el telefono de su contacto"></td>
+                    <td><input type="text" name="direccion" class="form-control" id="bProducto"
+                        value="<%= contacto[0].direccion %>" placeholder="Escriba la direccion de su contacto"></td>
+                    <td><input type="text" name="web" class="form-control" id="bProducto" value="<%= contacto[0].web %>"
+                        placeholder="Escriba la pagina web de su contacto"></td>
+                    <input type="hidden" name="id" id="id" value="<%= contacto[0].id %>">
+                  </tr>
+                  </tfoot>
+              </table>
+              <!--/Tabla con los inputs-->
+
+              <!--Botones-->
+              <button type="submit" class="btn btn-success btn-lg"><i class="fa fa-plus btn btn-success btn-lg"></i> Crear contacto</button>
+              <a type="button" href="/administrador/contactos"><i class="fa fa-times btn btn-danger btn-lg ">
+                  Cancelar</i></a>
+              <!--/Botones-->
+            </div>
+          </form>
+        </div>
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+
+    <!-- ./wrapper -->
+
+
+    <%- include('partials/dashfooter.ejs'); %>
+      <!-- jQuery 3 -->
+      <script src="v1/../bower_components/jquery/dist/jquery.min.js"></script>
+      <!-- Bootstrap 3.3.7 -->
+      <script src="v1/../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+      <!-- SlimScroll -->
+      <script src="v1/../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+      <!-- FastClick -->
+      <script src="v1/../bower_components/fastclick/lib/fastclick.js"></script>
+      <!-- AdminLTE App -->
+      <script src="v1/../dist/js/adminlte.min.js"></script>
+      <!-- AdminLTE for demo purposes -->
+      <script src="v1/../dist/js/demo.js"></script>
+      </div>
+      </script>
+  </body>
+
+</html>

@@ -1,0 +1,73 @@
+<!--Pagina para crear contactos, se liga a la tabla proveedor-->
+<html>
+<%- include('partials/dashmenu.ejs'); %>
+
+  <body class="hold-transition skin-blue sidebar-mini">
+    <!-- Site wrapper -->
+    <div class="content-wrapper">
+      <!-- Content Header (Page header) -->
+      <%- include('partials/dashhead.ejs'); %>
+
+
+        <div class="box">
+          <div class="box-header with-border">
+            <h3>Crear nueva factura</h3>
+            <h4 class="text-muted">Aquí puedes crear una nueva factura</h4>
+          </div>
+          <div>
+            <form action="/saveContacto" method="post">
+              <!--Tabla de la pagina-->
+              <table id="" class="table table-bordered table-striped">
+                <thead>
+                  <tr>
+                    <th>NOMBRE</th>
+                    <th>CORREO</th>
+                    <th>TELEFONO</th>
+                    <th>DIRECCIÓN</th>
+                    <th>WEB</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><input type="text" name="nombre" class="form-control" id="bProducto"
+                        placeholder="Escriba el nombre de su contacto"></td>
+                    <td><input type="email" name="email" class="form-control" id="bProducto"
+                        placeholder="Escriba el correo de su contacto"></td>
+                    <td><input type="number" name="telefono" class="form-control" id="bProducto"
+                        placeholder="Escriba el telefono de su contacto"></td>
+                    <td><input type="text" name="direccion" class="form-control" id="bProducto"
+                        placeholder="Escriba la direccion de su contacto"></td>
+                    <td><input type="text" name="web" class="form-control" id="bProducto"
+                        placeholder="Escriba la pagina web de su contacto"></td>
+                  </tr>
+                </tbody> <!-- Corregido: etiqueta de cierre cambiada de </tfoot> a </tbody> -->
+              </table>
+              <button type="submit" class="btn btn-success btn-lg"><i class="fa fa-plus"></i> Crear contacto</button> <!-- Corregido: cambiado <a> a <button> y agregada clase "btn-lg" -->
+              <a href="/contactos" class="btn btn-danger btn-lg"><i class="fa fa-times"></i> Cancelar</a> <!-- Corregido: añadida clase "btn-lg" -->
+            </form>
+          </div>
+          <!--/Tabla de la pagina-->
+        </div>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+
+    <!-- ./wrapper -->
+
+
+    <%- include('partials/dashfooter.ejs'); %>
+      <!-- jQuery 3 -->
+      <script src="v1/../bower_components/jquery/dist/jquery.min.js"></script>
+      <!-- Bootstrap 3.3.7 -->
+      <script src="v1/../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+      <!-- SlimScroll -->
+      <script src="v1/../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+      <!-- FastClick -->
+      <script src="v1/../bower_components/fastclick/lib/fastclick.js"></script>
+      <!-- AdminLTE App -->
+      <script src="v1/js/adminlte.min.js"></script>
+      <!-- AdminLTE for demo purposes -->
+      <script src="v1/js/demo.js"></script>
+  </body>
+
+</html>

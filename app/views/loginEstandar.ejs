@@ -1,0 +1,35 @@
+<%-include("./partials/dashheaderL.ejs")%>
+
+<body class="p-3 mb-2 bg-light text-dark">
+  <div class="position-absolute top-50 start-50 translate-middle">
+    <div class="text-center">
+      <h2>Ingresar como vendedor</h2>
+      <p class="text-muted">Si no tienes usuario vendedor, pídele a tu usuario administrador que lo cree.</p>
+    </div>
+    <div class="container-sm">
+      <form id="formLoginVendedor" action="/loginvendedor" method="post">
+        <!-- Input del nombre -->
+        <div class="form-outline mb-4">
+          <label class="form-label">Ingrese su nombre</label>
+          <input type="text" class="form-control" id="usuario" name="usuario" />
+        </div>
+
+        <!-- Input de la contraseña -->
+        <div class="form-outline mb-4">
+          <label class="form-label">Ingrese su contraseña</label>
+          <input type="password" id="password" name="password" class="form-control" />
+        </div>
+
+        <div class="row mb-4">
+          <div class="col d-flex justify-content-center"></div>
+        </div>
+
+        <!-- Botón de registro -->
+        <div class="text-center">
+          <button class="btn btn-primary" type="submit">Ingresar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!--Pagina de cliente, ligada a la tabla cliente-->
+
+<html>
+<%- include('partials/dashmenu.ejs'); %>
+<body class="hold-transition skin-blue sidebar-mini">
+<!-- Site wrapper -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+<%- include('partials/dashhead.ejs'); %>
+
+
+    <div class="box">
+      <div class="box-header with-border">
+        <h3>Tus Compras</h3>
+        <h4 class="text-muted">Aquí puedes registrar las compras que hagas para tu empresa</h4>
+        <a type="button" href="/administrador/crear-compra"><i class="fa fa-pencil-square-o btn btn-primary btn-lg"> Añadir Compra</i></a>
+      </div>
+      <div>
+        <table id="" class="table table-bordered table-striped">
+          <thead>
+          <tr>
+            <th>VALOR</th>
+            <th>FECHA</th>
+            <th>ACCIONES</th>
+          </tr>
+          </thead>
+          <tbody>
+            <% compra.forEach((element)=>{ %>
+              <tr>
+                <td><%= element.valor%></td>
+                <td><%= element.fecha%></td>
+                <td>
+                  <a type="button"><i class="fa fa-trash btn btn-danger"> Borrar Compra</i></a>
+                </td>
+              </tr>
+              <% }); %>
+          </tfoot>
+        </table>
+        
+      </div>
+
+    </div>
+  <!-- /.content -->
+  </div>
+
+
+<%- include('partials/dashfooter.ejs'); %>
+<!-- jQuery 3 -->
+<script src="v1/../bower_components/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap 3.3.7 -->
+<script src="v1/../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- SlimScroll -->
+<script src="v1/../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<!-- FastClick -->
+<script src="v1/../bower_components/fastclick/lib/fastclick.js"></script>
+<!-- AdminLTE App -->
+<script src="v1/../dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="v1/../dist/js/demo.js"></script>
+</div>
+</script>
+</body>
+</html>
+

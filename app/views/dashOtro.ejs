@@ -1,0 +1,59 @@
+<!--Pagina de otras opciones, contiene los botones que redirigen
+a las demas funciones que posee el proyecto-->
+
+<html>
+<%- include('partials/dashmenu.ejs'); %>
+
+  <body class="hold-transition skin-blue sidebar-mini">
+    <!-- Site wrapper -->
+    <div class="content-wrapper">
+      <!-- Content Header (Page header) -->
+      <%- include('partials/dashhead.ejs'); %>
+
+
+        <div class="box">
+          <div class="box-header with-border">
+            <h3>Otras opciones</h3>
+            <h4 class="text-muted">Esta es la ventana de otros, explora otras opciones que tiene la aplicación</h4>
+          </div>
+          <!--Botones-->
+          <div class="content">
+            <a type="button" href="/administrador/calculadora"><i class="fa fa-calculator btn btn-primary btn-lg btn-block">
+                Calculadora</i></a>
+            <a type="button" href="/administrador/facturas"><i class="fa fa-file-text-o btn btn-primary btn-lg btn-block">
+                Facturas</i></a>
+            <a type="button" href="/administrador/ventas-diarias"><i class="fa fa-shopping-basket btn btn-primary btn-lg btn-block">
+                Ventas recientes</i></a>
+            <a type="button" href="/administrador/informes"><i class="fa fa-file-text-o btn btn-primary btn-lg btn-block">
+                Informes</i></a>
+            <a type="button" href="/administrador/pagos-pendientes"><i class="fa fa-usd btn btn-primary btn-lg btn-block"> Pagos
+                pendientes</i></a>
+                <a type="button" href="/administrador/deudor"><i class="fa fa-users btn btn-primary btn-lg btn-block">
+                  Deudores</i></a>
+            <a type="button" href="/administrador/estanteria"><i class="fa fa-th btn btn-primary btn-lg btn-block">
+                Estanterías</i></a>
+            <!--/Botones-->
+          </div>
+        </div>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+
+    <%- include('partials/dashfooter.ejs'); %>
+      <!-- jQuery 3 -->
+      <script src="v1/../bower_components/jquery/dist/jquery.min.js"></script>
+      <!-- Bootstrap 3.3.7 -->
+      <script src="v1/../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+      <!-- SlimScroll -->
+      <script src="v1/../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+      <!-- FastClick -->
+      <script src="v1/../bower_components/fastclick/lib/fastclick.js"></script>
+      <!-- AdminLTE App -->
+      <script src="v1/../dist/js/adminlte.min.js"></script>
+      <!-- AdminLTE for demo purposes -->
+      <script src="v1/../dist/js/demo.js"></script>
+      </div>
+      </script>
+  </body>
+
+</html>

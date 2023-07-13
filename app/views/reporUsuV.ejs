@@ -1,0 +1,132 @@
+<!-- Pagina para ver los reportes de los usuarios vendedores-->
+
+<html>
+<%- include('partials/dashmenu.ejs'); %>
+
+    <body class="hold-transition skin-blue sidebar-mini">
+        <!-- Site wrapper -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <%- include('partials/dashhead.ejs'); %>
+
+                <div class="box">
+                    <div class="box-header with-border">
+                        <h3>Reportes del usuario: </h3>
+                        <h4 class="text-muted">Aquí puedes ver los reportes de las acciones de tu usuario vendedor</h4>
+                    </div>
+                    <!-- Reporte del mes del usuario -->
+                    <div class="col-md-4">
+                        <div class="panel panel-primary">
+                            <div class="panel-body">
+                                <div class="pull-left">
+                                    <h3 class="pull-right"> Reporte del mes del usuario: </h3>
+                                </div>
+                                <!-- Tabla dentro del reporte -->
+                                <table class="table table-bordered table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Nombre del usuario</th>
+                                            <th>Ventas de hoy</th>
+                                            <th>Ventas de este mes</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        </tfoot>
+                                </table>
+                                <!-- /Tabla dentro del reporte -->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /Reporte del mes del usuario -->
+
+                    <!-- Reporte de los productos vendidos -->
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="panel panel-primary">
+                                <div class="panel-body">
+                                    <div class="pull-left image">
+                                        <h3 class="pull-right"> Productos vendidos: </h3>
+                                    </div>
+                                    <!-- Tabla dentro del reporte -->
+                                    <table class="table table-bordered table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Ventas recientes:</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <td></td>
+                                            </tfoot>
+                                    </table>
+                                    <!-- /Tabla dentro del reporte -->
+                                </div>
+                            </div>
+                            <!-- /Reporte de los productos vendidos -->
+                        </div>
+
+                        <!-- Reporte de los pagos de nomina del usuario -->
+                        <div class="col-md-4">
+                            <div class="panel panel-primary">
+                                <div class="panel-body">
+                                    <div class="pull-left">
+                                        <h3 class="pull-right"> Pagos de nomina: </h3>
+                                    </div>
+                                    <!-- Tabla dentro del reporte -->
+                                    <table class="table table-bordered table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Fecha del pago</th>
+                                                <th>Cantidad del pago</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                            </tfoot>
+                                    </table>
+                                    <!-- /Tabla dentro del reporte -->
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /Reporte del mes del usuario -->
+                    </div>
+
+                    <!-- crear pdf -->
+                    <h3 class="text-muted">Exportar reportes a PDF</h3>
+                    <script type="text/javascript" src="/js/jspdf.min.js"></script>
+                    <a href="javascript:generarPdf()" type="button" class="btn btn-primary">Generar pdf</a>
+                    <script type="text/javascript">
+                        function generarPdf() {
+                            var documento = new jsPDF();
+                            documento.text(20, 20, "./");
+                            documento.save('reporte.pdf');
+                        }
+
+                    </script>
+                    <!-- /crear pdf -->
+                </div>
+                <!-- jQuery 3 -->
+                <script src="v1/../bower_components/jquery/dist/jquery.min.js"></script>
+                <!-- Bootstrap 3.3.7 -->
+                <script src="v1/../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+                <!-- SlimScroll -->
+                <script src="v1/../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+                <!-- FastClick -->
+                <script src="v1/../bower_components/fastclick/lib/fastclick.js"></script>
+                <!-- AdminLTE App -->
+                <script src="v1/../dist/js/adminlte.min.js"></script>
+                <!-- AdminLTE for demo purposes -->
+                <script src="v1/../dist/js/demo.js"></script>
+        </div>
+        <%- include('partials/dashfooter.ejs'); %>
+            </script>
+    </body>
+
+</html>

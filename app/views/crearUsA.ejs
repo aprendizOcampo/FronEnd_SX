@@ -1,0 +1,33 @@
+<!--Pagina crear usuario administrador-->
+<%-include("./partials/dashheaderL.ejs")%>
+
+  <body class="p-3 mb-2 bg-light text-dark">
+    <!--Formulario-->
+    <div class="position-absolute top-50 start-50 translate-middle">
+      <div class="text-center">
+        <h2>Crear usuario administrador</h2>
+        <p class="text-muted">una vez creado tu usuario administrador, podrás acceder a tu inventario</p>
+      </div>
+      <div class="container-sm">
+        <form action="/register" method="POST">
+          <div class="mb-3">
+            <label for="nombre" class="form-label">Nombre completo</label>
+            <input id="nombre" name="nombre" type="text" class="form-control" aria-describedby="emailHelp">
+          </div>
+          <div class="mb-3">
+            <label for="contrasena" class="form-label">Password</label>
+            <input id="contrasena" name="contrasena" type="password" class="form-control">
+          </div>
+      </div>
+      <div class="card-footer bg-transparent border-primary">
+        <a href="/" type="button" class="btn btn-secondary">Cancelar</a>
+        <button type="submit" class="btn btn-primary">Registrar</button>
+      </div>
+      </form>
+    </div>
+    </div>
+    <!--/Formulario-->
+    <script src="js/bootstrap.bundle.min.js"></script>
+  </body>
+
+  </html>

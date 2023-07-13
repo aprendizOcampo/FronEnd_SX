@@ -1,0 +1,93 @@
+<!-- Pagina para ver los pagos pendientes del usuario, también se
+pueden agregar las deudas que terceros tengan con el emprendimiento -->
+
+<html>
+<%- include('partials/dashmenu.ejs'); %>
+<body class="hold-transition skin-blue sidebar-mini">
+<!-- Site wrapper -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+<%- include('partials/dashhead.ejs'); %>
+
+
+    <div class="box">
+      <div class="box-header with-border">
+        <h3>Pagos Pendientes</h3>
+        <h4 class="text-muted">Aquí puedes ver, modificar y agregar pagos que tengas pendientes o deudas que alguien tenga con tu empresa</h4>
+        <a type="button" href="/administrador/crear-pago"><i class="fa fa-pencil-square-o btn btn-primary btn-lg"> Agregar Nuevo Pago</i></a>
+      </div>
+      <div>
+        <!-- Tabla de información de los pagos pendientes -->
+        <table id="" class="table table-bordered table-striped">
+          <thead>
+          <tr>
+            <th>VALOR DEUDA</th>
+            <th>PLAZO_DEUDA</th>
+            <th>FECHA</th>
+            <th>DEUDOR</th>
+            <th>ACCIONES</th>
+          </tr>
+          </thead>
+          <tbody>
+            <% pago.forEach((element)=>{ %>
+              <tr>
+                <td><%= element.valor_deuda%></td>
+                <td><%= element.plazo_deuda%></td>
+                <td><%= element.fecha%></td>
+                <td><%= element.deudor_fk%></td>
+                <td>
+                  <a type="button" href="/administrador/modificar-pago"><i class="fa fa-edit btn btn-warning "> Modificar Pago Pendiente</i></a>
+                  <a type="button" href="/administrador/borrarPago?id=<%= element.id %> "><i class="fa fa-trash btn btn-danger"> Borrar Pago Pendiente</i></a>
+                </td>
+              </tr>
+              <% }); %>
+          </tfoot>
+        </table>
+        <!-- /Tabla de información de los pagos pendientes -->
+      </div>
+    </div>
+  <!-- /.content -->
+  </div>
+
+
+<%- include('partials/dashfooter.ejs'); %>
+
+<script>
+  function eliminarPagoPendiente(id) {
+    Swal.fire({
+      title: 'Estas seguro?',
+      text: "No tiene reversa! ... " + id,
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, eliminalo!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        window.location.href = 'DELETE FROM proveedores WHERE id = ?', id;
+        Swal.fire(
+          'Deleted!',
+          'El pago ha sido elimando.',
+          'success'
+        )
+      }
+    })
+  }
+</script>
+<!-- jQuery 3 -->
+<script src="v1/../bower_components/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap 3.3.7 -->
+<script src="v1/../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- SlimScroll -->
+<script src="v1/../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<!-- FastClick -->
+<script src="v1/../bower_components/fastclick/lib/fastclick.js"></script>
+<!-- AdminLTE App -->
+<script src="v1/../dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="v1/../dist/js/demo.js"></script>
+</div>
+</script>
+</body>
+</html>
+

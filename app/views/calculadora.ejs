@@ -1,0 +1,166 @@
+<!--Calculadora de la aplicación, ligada a la tabla historial_calculos.
+Esta calculadora es solo del usuario administrador-->
+<html>
+<%- include('partials/dashmenu.ejs'); %>
+
+  <body class="hold-transition skin-blue sidebar-mini">
+    <!-- Site wrapper -->
+    <div class="content-wrapper">
+      <!-- Content Header (Page header) -->
+      <%- include('partials/dashhead.ejs'); %>
+
+        <!--Codigo de la calculadora-->
+        <div class="box">
+          <div class="box-header with-border">
+            <h3>Calculadora de la aplicación</h3>
+            <h4 class="text-muted">Esta es la calculadora de la aplicación, puedes volver a usar una ecuación si lo
+              necesitas</h4>
+          </div>
+          <form id="crearCalculoForm" action="/administrador/saveCalculo" method="post">
+          <div class="row">
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+            </div>
+            <div class="col-md-4">
+              <div class="panel panel-primary">
+                <div class="panel-body">
+                  <div class="input-group">
+                    <span class="input-group-addon"></span>
+                    <input type="text" class="form-control" id="h" required disabled placeholder="calculadora"
+                      value="0">
+                  </div>
+                  <br>
+                  <div class="btn-group btn-group-justified" role="group">
+                    <div class="btn-group" role="group">
+                      <button class="btn btn-default" onclick="l('7')">7</button>
+                    </div>
+                    <div class="btn-group" role="group">
+                      <button class="btn btn-default" onclick="l('8')">8</button>
+                    </div>
+                    <div class="btn-group" role="group">
+                      <button class="btn btn-default" onclick="l('9')">9</button>
+                    </div>
+                    <div class="btn-group" role="group">
+                      <button class="btn btn-default" onclick="l('/')">/</button>
+                    </div>
+                  </div>
+                  <div class="btn-group btn-group-justified" role="group">
+                    <div class="btn-group" role="group">
+                      <button class="btn btn-default" onclick="l('4')">4</button>
+                    </div>
+                    <div class="btn-group" role="group">
+                      <button class="btn btn-default" onclick="l('5')">5</button>
+                    </div>
+                    <div class="btn-group" role="group">
+                      <button class="btn btn-default" onclick="l('6')">6</button>
+                    </div>
+                    <div class="btn-group" role="group">
+                      <button class="btn btn-default" onclick="l('*')">x</button>
+                    </div>
+                  </div>
+                  <div class="btn-group btn-group-justified" role="group">
+                    <div class="btn-group" role="group">
+                      <button class="btn btn-default" onclick="l('1')">1</button>
+                    </div>
+                    <div class="btn-group" role="group">
+                      <button class="btn btn-default" onclick="l('2')">2</button>
+                    </div>
+                    <div class="btn-group" role="group">
+                      <button class="btn btn-default" onclick="l('3')">3</button>
+                    </div>
+                    <div class="btn-group" role="group">
+                      <button class="btn btn-default" onclick="l('+')">+</button>
+                    </div>
+                  </div>
+                  <div class="btn-group btn-group-justified" role="group">
+
+                    <div class="btn-group" role="group">
+                      <button class="btn btn-default" onclick="l('.')">.</button>
+                    </div>
+                    <div class="btn-group" role="group">
+                      <button class="btn btn-default" onclick="l('0')">0</button>
+                    </div>
+                    <div class="btn-group" role="group">
+                      <button type="submit" class="btn btn-default" onclick="h()">=</button>
+                    </div>
+                    <div class="btn-group" role="group">
+                      <button class="btn btn-default" onclick="l('-')">-</button>
+                    </div>
+                  </div>
+                  <button class="btn btn-default btn-lg btn-block" onClick="c('0')">C</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--/codigo de la calculadora-->
+          <!--Historial de calculos (abajo)-->
+
+          <div>
+            <table id="" class="table table-bordered table-striped">
+              <thead>
+                <tr>
+                  <th>Historial de calculos</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% calculo.forEach((element) => { %>
+                <tr>
+                  <td><%= element.calculo %></td>
+                    <a type="button" href="/administrador/borrarCalculo?id=<%= element.id %> "><i class="fa fa-times-circle-o btn btn-danger ">Eliminar</i></a>
+                  </td>
+                </tr>
+                <% }); %>
+                </tfoot>
+              </form>
+            </table>
+          </div>
+        </div>
+        <!--/historial de calculos-->
+
+        <!-- jQuery 3 -->
+        <script src="v1/../bower_components/jquery/dist/jquery.min.js"></script>
+        <!-- Bootstrap 3.3.7 -->
+        <script src="v1/../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+        <!-- SlimScroll -->
+        <script src="v1/../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+        <!-- FastClick -->
+        <script src="v1/../bower_components/fastclick/lib/fastclick.js"></script>
+        <!-- AdminLTE App -->
+        <script src="v1/../dist/js/adminlte.min.js"></script>
+        <!-- AdminLTE for demo purposes -->
+        <script src="v1/../dist/js/demo.js"></script>
+
+        <script>
+          var i = document.getElementById('h');
+
+          function l(y) {
+            if (i.value == "0") {
+              i.value = y;
+            } else {
+              i.value += y;
+            }
+          }
+
+          function c() {
+            i.value = "";
+            r();
+          }
+
+          function h() {
+            i.value = eval(i.value);
+          }
+
+          function r() {
+            if (i.value == " ") {
+              i.value = "0";
+            }
+          }
+        </script>
+
+    </div>
+    <%- include('partials/dashfooter.ejs'); %>
+  </body>
+
+</html>

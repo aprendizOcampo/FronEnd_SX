@@ -1,0 +1,91 @@
+<!--Pagina crear usuario vendedor, ligado a la tabla usuario_vendedor-->
+<html>
+<%- include('partials/dashmenu.ejs'); %>
+
+  <body class="hold-transition skin-blue sidebar-mini">
+    <!-- Site wrapper -->
+    <div class="content-wrapper">
+      <!-- Content Header (Page header) -->
+      <%- include('partials/dashhead.ejs'); %>
+
+        <!--Formulario-->
+        <div class="box">
+          <div class="box-header with-border">
+            <h3>Crear usuario vendedor</h3>
+          </div>
+          <div class="row">
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+            </div>
+            <div class="col-md-4">
+              <div class="panel panel-primary">
+                <div class="panel-body">
+                  <div class="position-absolute top-50 start-50 translate-middle">
+                    <div class="text-center">
+                      <h3>Crear vendedor</h3>
+                      <p class="text-muted">una vez creado tu usuario, podras empezar a vender</p>
+                    </div>
+                    <div class="container-sm">
+                      <form action="/administrador/saveVendedor" method="post">
+                        <!-- Email input -->
+                        <div class="form-outline mb-4">
+                          <label class="form-label" for="form2Example1"> Ingrese el nombre </label>
+                          <input type="text" id="form2Example1" name="nombres" class="form-control" />
+                        </div>
+
+                        <div class="form-outline mb-4">
+                          <label class="form-label" for="form2Example1">Ingrese el apellido</label>
+                          <input type="text" id="form2Example1" name="apellidos" class="form-control" />
+                        </div>
+
+                        <!-- Password input -->
+                        <div class="form-outline mb-4">
+                          <label class="form-label" for="form2Example2">Ingrese el usuario</label>
+                          <input type="text" id="form2Example2" name="usuario" class="form-control" />
+                        </div>
+
+                        <div class="form-outline mb-4">
+                          <label class="form-label" for="form2Example2">ingrese la contraseña</label>
+                          <input type="password" id="form2Example2" name="password" class="form-control" />
+                        </div>
+
+                        <!-- 2 column grid layout for inline styling -->
+                        <div class="row mb-4">
+                          <div class="col d-flex justify-content-center">
+                          </div>
+                        </div>
+                        <div class="text-center">
+                          <button type="submit"  class="btn btn-primary">Crear usuario</button>
+                          <a type="button" href="/administrador/usuarios"><i class="fa fa-times btn btn-danger btn-lg ">Cancelar</i></a>
+                        </div>
+                        </button>
+                    </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- /.content -->
+        </div>
+        <!--/Formulario-->
+
+        <!-- jQuery 3 -->
+        <script src="v1/../bower_components/jquery/dist/jquery.min.js"></script>
+        <!-- Bootstrap 3.3.7 -->
+        <script src="v1/../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+        <!-- SlimScroll -->
+        <script src="v1/../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+        <!-- FastClick -->
+        <script src="v1/../bower_components/fastclick/lib/fastclick.js"></script>
+        <!-- AdminLTE App -->
+        <script src="v1/../dist/js/adminlte.min.js"></script>
+        <!-- AdminLTE for demo purposes -->
+        <script src="v1/../dist/js/demo.js"></script>
+    </div>
+    <%- include('partials/dashfooter.ejs'); %>
+      </script>
+  </body>
+
+</html>

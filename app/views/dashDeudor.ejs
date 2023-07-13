@@ -1,0 +1,49 @@
+<!-- Pagina para ver los deudores añadidos a la empresa -->
+
+<html>
+<%- include('partials/dashmenu.ejs'); %>
+<body class="hold-transition skin-blue sidebar-mini">
+<!-- Site wrapper -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+<%- include('partials/dashhead.ejs'); %>
+
+
+    <div class="box">
+      <div class="box-header with-border">
+        <h3>Tus Deudores</h3>
+        <h4 class="text-muted">Aquí puedes ver, modificar y agregar personas que tengan deudas con tu empresa</h4>
+        <a type="button" href="/crear-pago"><i class="fa fa-pencil-square-o btn btn-primary btn-lg"> Agregar Deudor</i></a>
+      </div>
+      <div>
+        <!-- Tabla de información de los pagos pendientes -->
+        <table id="" class="table table-bordered table-striped">
+          <thead>
+          <tr>
+            <th>NOMBRES</th>
+            <th>APELLIDOS</th>
+            <th>EMAIL</th>
+            <th>TELEFONO</th>
+            <th>ACCIONES</th>
+          </tr>
+          </thead>
+          <tbody>
+            <% deudor.forEach((element)=>{ %>
+              <tr>
+                <td><%= element.nombres%></td>
+                <td><%= element.apellidos%></td>
+                <td><%= element.email%></td>
+                <td><%= element.telefono%></td>
+                <td>
+                  <a type="button" href="/modificar-pago"><i class="fa fa-edit btn btn-warning "> Modificar Pago Pendiente</i></a>
+                  <a type="button" onclick="eliminarPagoPendiente('<%= element.ID %>')"><i class="fa fa-trash btn btn-danger"> Borrar Pago Pendiente</i></a>
+                </td>
+              </tr>
+              <% }); %>
+          </tfoot>
+        </table>
+        <!-- /Tabla de información de los pagos pendientes -->
+      </div>
+    </div>
+  <!-- /.content -->
+  </div>

@@ -1,0 +1,78 @@
+<!--Pagina de contactos, se liga a la tabla proveedor-->
+<html>
+<%- include('partials/dashmenu.ejs'); %>
+
+  <body class="hold-transition skin-blue sidebar-mini">
+    <!-- Site wrapper -->
+    <div class="content-wrapper">
+      <!-- Content Header (Page header) -->
+      <%- include('partials/dashhead.ejs'); %>
+
+        <div class="box">
+          <div class="box-header with-border">
+            <h3>Contactos de los proveedores</h3>
+            <h4 class="text-muted">Esta es tu lista de contactos, puedes usar los datos que estan guardados aquí</h4>
+            <a type="button" href="/administrador/crear-contacto"><i class="fa fa-pencil-square-o btn btn-primary btn-lg "> Agregar nuevo contacto</i></a>
+          </div>
+          <div>
+            <!--Tabla de la pagina-->
+            <table id="" class="table table-bordered table-striped">
+              <thead>
+                <tr>
+                  <th>NOMBRE</th>
+                  <th>EMAIL</th>
+                  <th>TELEFONO</th>
+                  <th>DIRECCIÓN</th>
+                  <th>WEB</th>
+                  <th>ACCIONES</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% contacto.forEach((element) => { %>
+                  <tr>
+                    <td>
+                      <%= element.nombre %>
+                    </td>
+                    <td>
+                      <%= element.email %>
+                    </td>
+                    <td>
+                      <%= element.telefono %>
+                    </td>
+                    <td>
+                      <%= element.direccion %>
+                    </td>
+                    <td>
+                      <%= element.web %>
+                    </td>
+                    <td>
+                      <a type="button" href="/administrador/modificar-contacto/<%= element.id %>"><i class="fa fa-edit btn btn-warning "> Modificar Contacto</i></a>
+                      <a type="button" href="/administrador/borrar?id=<%= element.id %> "><i class="fa fa-trash btn btn-danger"> Borrar Contacto</i></a>
+                    </td>
+                  </tr>
+                <% }); %>
+              </tbody>
+            </table>
+            <!--/Tabla de la pagina-->
+          </div>
+        </div>
+
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+
+    <%- include('partials/dashfooter.ejs'); %>
+      <!-- jQuery 3 -->
+      <script src="v1/../bower_components/jquery/dist/jquery.min.js"></script>
+      <!-- Bootstrap 3.3.7 -->
+      <script src="v1/../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+      <!-- SlimScroll -->
+      <script src="v1/../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+      <!-- FastClick -->
+      <script src="v1/../bower_components/fastclick/lib/fastclick.js"></script>
+      <!-- AdminLTE App -->
+      <script src="v1/../dist/js/adminlte.min.js"></script>
+      <!-- AdminLTE for demo purposes -->
+      <script src="v1/../dist/js/demo.js"></script>
+  </body>
+</html>

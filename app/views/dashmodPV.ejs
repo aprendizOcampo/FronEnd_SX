@@ -1,0 +1,83 @@
+<!--Pagina para modificar a los usuarios vendedores, también se
+agrega la información adicional desde aquí-->
+
+<html>
+<%- include('partials/dashmenuUV.ejs'); %>
+
+  <body class="hold-transition skin-blue sidebar-mini">
+    <!-- Site wrapper -->
+    <div class="content-wrapper">
+      <!-- Content Header (Page header) -->
+      <%- include('partials/dashhead.ejs'); %>
+
+        <div class="box">
+          <div class="box-header with-border">
+            <h3>Modificar datos del usuario vendedor</h3>
+            <h4 class="text-muted">Aquí puedes modificar los datos de tu usuario vendedor</h4>
+          </div>
+
+          <!-- Formulario -->
+          <div class="row">
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+            </div>
+            <div class="col-md-4">
+              <div class="panel panel-primary">
+                <div class="panel-body">
+                  <div class="position-absolute top-50 start-50 translate-middle">
+                    <div class="text-center">
+                      <h3>Modificar Usuario</h3>
+                    </div>
+                    <div class="container-sm">
+                      <form>
+                        <!-- Input del nombre -->
+                        <div class="form-outline mb-4">
+                          <label class="form-label" for="form2Example1">Cambiar nombre</label>
+                          <input type="text" id="form2Example1" class="form-control" />
+                        </div>
+
+                        <!-- Input de la contraseña -->
+                        <div class="form-outline mb-4">
+                          <label class="form-label" for="form2Example2">Cambiar contraseña</label>
+                          <input type="password" id="form2Example2" class="form-control" />
+                        </div>
+
+                        <!-- /Formulario -->
+
+                        <div class="row mb-4">
+                          <div class="col d-flex justify-content-center">
+                          </div>
+                        </div>
+                        <!-- Botones -->
+                        <div class="text-center">
+                          <a class="btn btn-primary" href="#" role="button">Guardar Cambios</a>
+                          <a class="btn btn-danger" href="/usuarios" role="button">Cancelar</a>
+                        </div>
+                        <!-- /Botones -->
+                    </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- jQuery 3 -->
+        <script src="v1/../bower_components/jquery/dist/jquery.min.js"></script>
+        <!-- Bootstrap 3.3.7 -->
+        <script src="v1/../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+        <!-- SlimScroll -->
+        <script src="v1/../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+        <!-- FastClick -->
+        <script src="v1/../bower_components/fastclick/lib/fastclick.js"></script>
+        <!-- AdminLTE App -->
+        <script src="v1/../dist/js/adminlte.min.js"></script>
+        <!-- AdminLTE for demo purposes -->
+        <script src="v1/../dist/js/demo.js"></script>
+    </div>
+    <%- include('partials/dashfooter.ejs'); %>
+      </script>
+  </body>
+
+</html>

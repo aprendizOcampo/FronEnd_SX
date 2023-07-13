@@ -1,0 +1,64 @@
+<!--Pagina para crear producto, ligada a la tabla producto-->
+<html>
+<%- include('partials/dashmenu.ejs'); %>
+
+<body class="hold-transition skin-blue sidebar-mini">
+  <!-- Site wrapper -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <%- include('partials/dashhead.ejs'); %>
+
+
+    <div class="box">
+      <div class="box-header with-border">
+        <h3>Agregar Producto</h3>
+      </div>
+      <!--Tabla de la pagina-->
+      <form id="crearProductoForm" action="/administrador/saveProducto" method="post">
+        <table id="" class="table table-bordered table-striped">
+          <thead>
+            <tr>
+              <th>Nombre del producto</th>
+              <th>Precio unitario</th>
+              <th>Cantidad</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><input type="text" name="nombre" class="form-control" id=""
+                  placeholder="Escriba el nombre de su producto"></td>
+              <td><input type="number" name="precio" class="form-control" id=""
+                  placeholder="Escriba el precio unitario de su producto"></td>
+              <td><input type="number" name="cantidad" class="form-control" id=""
+                  placeholder="Escriba la cantidad que posee de su producto"></td>
+            </tr>
+            </tfoot>
+          </tbody>
+        </table>
+        <button type="submit"><i class="fa fa-plus btn btn-success btn-lg"> Agregar Producto</i></button>
+        <a href="administrador/inventario"><i class="fa fa-times btn btn-danger btn-lg "> Cancelar</i></a>
+        <!--/Tabla de la pagina-->
+      </form>
+    </div>
+    <!-- /.content -->
+  </div>
+
+  <%- include('partials/dashfooter.ejs'); %>
+  <!-- jQuery 3 -->
+  <script src="v1/../bower_components/jquery/dist/jquery.min.js"></script>
+  <!-- Bootstrap 3.3.7 -->
+  <script src="v1/../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <!-- SlimScroll -->
+  <script src="v1/../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+  <!-- FastClick -->
+  <script src="v1/../bower_components/fastclick/lib/fastclick.js"></script>
+  <!-- AdminLTE App -->
+  <script src="v1/../dist/js/adminlte.min.js"></script>
+  <!-- AdminLTE for demo purposes -->
+  <script src="v1/../dist/js/demo.js"></script>
+  <script src="../producto.js"></script>
+  </div>
+  </script>
+</body>
+
+</html>
