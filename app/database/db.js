@@ -1,10 +1,12 @@
 import mysql from 'mysql';
+import config from "../config.js";
+
 
 const conexion = mysql.createConnection({
-  host: process.env.DB_HOST,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASS,
-  database: process.env.DB_DATABASE,
+    host: config.host,
+    database: config.database,
+    user: config.user,
+    password: config.password,
 });
 
 conexion.connect((error) => {

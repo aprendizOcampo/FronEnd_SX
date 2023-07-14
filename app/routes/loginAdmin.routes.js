@@ -70,6 +70,12 @@ administrador.get("/empresa", authController.isAuthenticated, async (req, res) =
   });
 });
 
+administrador.get("/crear-empresa", authController.isAuthenticated, (req, res) => {
+  res.render("dashCrearEmpresa", {
+    title: "Crear Empresa"
+  });
+});
+
 administrador.get("/calculadora", authController.isAuthenticated, async (req, res) => {
 
   let rutaCalculo = process.env.API + '/historialCalculos'
@@ -712,6 +718,73 @@ administrador.get("/borrarPago", async (req, res) => {
     console.log("Error al borrar el registro:", error);
   }
   res.redirect('Pagos Pendientes')
+});
+
+administrador.post("/saveEmpresa", async (req, res) => {
+  const { NIT_empresa, direccion_empresa, nombre } = req.body;
+  let datos = {
+    NIT_empresa: NIT_empresa,
+    direccion_empresa: direccion_empresa,
+    nombre: nombre
+  }
+  try {
+    let metodo = 'post';
+    const url = process.env.API + "/empresa";
+    if (req.body.id) {
+      const id = req.body.id;
+      metodo = "put"
+      datos = {
+        NIT_empresa: NIT_empresa,
+        direccion_empresa: direccion_empresa,
+        nombre: nombre
+      }
+      console.log("se ejecuto el put")
+    }
+    const options = {
+      method: metodo,
+      body: JSON.stringify(datos),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    };
+
+    const response = await fetch(url, options);
+    const data = await response.json();
+
+    if (data.message === "empresa añadida exitosamente") {
+      console.log("La empresa a sido añadida a la base de datos");
+    } else {
+      console.log("La base de datos no insertó los datos");
+    }
+  } catch (error) {
+    console.log("Error al insertar la empresa:", error);
+  }
+
+  res.redirect('empresa')
+
+});
+
+administrador.get("/borrarEmpresa", async (req, res) => {
+  try {
+    const id = req.query.id;
+    const url = process.env.API + `/empresa/${id}`;
+    const options = {
+      method: "DELETE",
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    };
+
+    const response = await fetch(url, options);
+    const data = await response.json();
+
+    if (data.affectedRows > 0) {
+      console.log("Registro borrado");
+    }
+  } catch (error) {
+    console.log("Error al borrar el registro:", error);
+  }
+  res.redirect('empresa')
 });
 
 

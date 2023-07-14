@@ -12,8 +12,7 @@
         <div class="box">
           <div class="box-header with-border">
             <h3>Tu Empresa</h3>
-            <h4 class="text-muted">Aquí puedes ver y guardar los datos de tu empresa</h4>
-            <a type="button" href="/administrador/crear-empresa"><i class="fa fa-pencil-square-o btn btn-primary btn-lg"> Añadir datos de la empresa</i></a>
+            <h4 class="text-muted">Aquí puedes ver y modificar los datos de tu empresa</h4>
           </div>
           <div class="row">
           </div>
@@ -22,16 +21,22 @@
             </div>
             <div class="col-md-4">
               <div class="panel panel-default">
+                <form action="/administrador/saveEmpresa" method="post">
                 <!-- Datos del administrador -->
                 <div class="panel-body">
-                <% empresa.forEach((element) => { %>
-                  <h3>Nombre de la empresa: <%= element.nombre %></h3>
-                  <p>NIT: <%= element.NIT_empresa %></p>
-                  <p>Dirección de la empresa: <%= element.direccion_empresa %></p>
-                  <div>
-                    <a type="button" href="/administrador/borrarEmpresa?id=<%= element.id %>"><i class="fa fa-trash btn btn-danger"> Borrar Empresa</i></a>
+                  <h3>Nombre de la empresa: </h3>
+                  <td><input type="text" name="nombre" class="form-control"
+                    placeholder="Escriba el nombre de su empresa"></td>
+                  <p>NIT: </p>
+                  <td><input type="text" name="NIT_empresa" class="form-control"
+                    placeholder="Escriba el NIT de su empresa"></td>
+                  <p>Dirección de la empresa: </p>
+                  <td><input type="text" name="direccion_empresa" class="form-control"
+                    placeholder="Escriba la dirección de su empresa"></td>
+                  <div class="text-center">
+                    <button type="submit"  class="btn btn-primary">Guardar</button>
                   </div>
-                  <% }); %>
+                  </form>
                 </div>
               </div>
             </div>
