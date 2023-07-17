@@ -2,72 +2,66 @@
 <html>
 <%- include('partials/dashmenu.ejs'); %>
 
-  <body class="hold-transition skin-blue sidebar-mini">
-    <!-- Site wrapper -->
-    <div class="content-wrapper">
-      <!-- Content Header (Page header) -->
-      <%- include('partials/dashhead.ejs'); %>
+    <body class="hold-transition skin-blue sidebar-mini">
+        <!-- Site wrapper -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <%- include('partials/dashhead.ejs'); %>
 
 
-        <div class="box">
-          <div class="box-header with-border">
-            <h3>Crear nuevo registro</h3>
-            <h4 class="text-muted">Aquí puedes agregar una compra o una venta que se haya realizado</h4>
-            <a type="button" href="#"><i class="fa fa-pencil-square-o btn btn-primary btn-lg "> Agregar campos de
+                <div class="box">
+                    <div class="box-header with-border">
+                        <h3>Crear nuevo registro</h3>
+                        <h4 class="text-muted">Aquí puedes agregar una compra o una venta que se haya realizado</h4>
+                        <a type="button" href="#"><i class="fa fa-pencil-square-o btn btn-primary btn-lg "> Agregar campos de
                 registro</i></a>
-          </div>
-          <div>
-            <form action="/administrador/saveLibroM" method="post">
-              <!--Tabla de la pagina-->
-              <table id="" class="table table-bordered table-striped">
-                <thead>
-                  <tr>
-                    <th>FECHA</th>
-                    <th>TIPO DE ACCION</th>
-                    <th>VALOR</th>
-                    <th>USUARIO</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><input type="date" name="fecha" class="form-control" id="" 
-                        placeholder="Escriba la fecha del registro"></td>
-                    <td><input type="text" name="tipo_accion" class="form-control" id=""
-                        placeholder="Escriba el tipo de acción (ej. pago a proveedor)"></td>
-                    <td><input type="text" name="valor" class="form-control" id=""
-                        placeholder="Escriba el valor de la acción (ej. 100.000)"></td>
-                    <td><input type="text" class="form-control" id="" placeholder="Escriba el nombre del vendedor"></td>
-                  </tr>
-                  </tfoot>
-              </table>
-              <button type="submit" onclick="alert('registro creado');"><i class="fa fa-check btn btn-success btn-lg"> Guardar</i></button>
-              <a type="button" href="/administrador/contabilidad"><i class="fa fa-times btn btn-danger btn-lg "> Cancelar</i></a>
-          </div>
-          <!--/Tabla de la pagina-->
-          </form>
+                    </div>
+                    <div>
+                        <form action="/administrador/saveLibroM" method="post">
+                            <!--Tabla de la pagina-->
+                            <table id="" class="table table-bordered table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>FECHA</th>
+                                        <th>TIPO DE ACCION</th>
+                                        <th>VALOR</th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><input type="date" name="fecha" class="form-control" id="" placeholder="Escriba la fecha del registro"></td>
+                                        <td><input type="text" name="tipo_accion" class="form-control" id="" placeholder="Escriba el tipo de acción (ej. pago a proveedor)"></td>
+                                        <td><input type="text" name="valor" class="form-control" id="" placeholder="Escriba el valor de la acción (ej. 100.000)"></td>
+                                    </tr>
+                                    </tfoot>
+                            </table>
+                            <button type="submit" onclick="alert('registro creado');"><i class="fa fa-check btn btn-success btn-lg"> Guardar</i></button>
+                            <a type="button" href="/administrador/contabilidad"><i class="fa fa-times btn btn-danger btn-lg "> Cancelar</i></a>
+                    </div>
+                    <!--/Tabla de la pagina-->
+                    </form>
+                </div>
+
+                </section>
+                <!-- /.content -->
         </div>
 
-        </section>
-        <!-- /.content -->
-    </div>
 
 
-
-    <%- include('partials/dashfooter.ejs'); %>
-      <!-- jQuery 3 -->
-      <script src="v1/../bower_components/jquery/dist/jquery.min.js"></script>
-      <!-- Bootstrap 3.3.7 -->
-      <script src="v1/../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-      <!-- SlimScroll -->
-      <script src="v1/../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-      <!-- FastClick -->
-      <script src="v1/../bower_components/fastclick/lib/fastclick.js"></script>
-      <!-- AdminLTE App -->
-      <script src="v1/../dist/js/adminlte.min.js"></script>
-      <!-- AdminLTE for demo purposes -->
-      <script src="v1/../dist/js/demo.js"></script>
-      </div>
-      </script>
-  </body>
+        <%- include('partials/dashfooter.ejs'); %>
+            <!-- jQuery 3 -->
+            <script src="v1/../bower_components/jquery/dist/jquery.min.js"></script>
+            <!-- Bootstrap 3.3.7 -->
+            <script src="v1/../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+            <!-- SlimScroll -->
+            <script src="v1/../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+            <!-- FastClick -->
+            <script src="v1/../bower_components/fastclick/lib/fastclick.js"></script>
+            <!-- AdminLTE App -->
+            <script src="v1/../dist/js/adminlte.min.js"></script>
+            <!-- AdminLTE for demo purposes -->
+            <script src="v1/../dist/js/demo.js"></script>
+            </div>
+            </script>
+    </body>
 
 </html>
