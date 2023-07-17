@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "",
   "main": "app/index.js",
-  "type": "module",
   "scripts": {
     "dev": "set NODE_ENV=develop& nodemon index.js --exec babel-node",
     "build": "babel app --out-dir dist",
