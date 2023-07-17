@@ -1020,7 +1020,7 @@ administrador.get("/borrarPago", /*#__PURE__*/function () {
 //get libro m
 administrador.get("/contabilidad", authController.isAuthenticated, /*#__PURE__*/function () {
   var _ref21 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee21(req, res) {
-    var rutaLibroMayor, resultLibroMayor, libro;
+    var rutaLibroMayor, resultLibroMayor, libro, rutaAdmin, resultAdmin, admin;
     return _regeneratorRuntime().wrap(function _callee21$(_context21) {
       while (1) switch (_context21.prev = _context21.next) {
         case 0:
@@ -1033,11 +1033,21 @@ administrador.get("/contabilidad", authController.isAuthenticated, /*#__PURE__*/
           return resultLibroMayor.json();
         case 6:
           libro = _context21.sent;
+          rutaAdmin = process.env.API + '/usuarioAdmin';
+          _context21.next = 10;
+          return (0, _nodeFetch["default"])(rutaAdmin);
+        case 10:
+          resultAdmin = _context21.sent;
+          _context21.next = 13;
+          return resultAdmin.json();
+        case 13:
+          admin = _context21.sent;
           res.render("dashCont", {
             title: "Contabilidad",
-            libro: libro
+            libro: libro,
+            admin: admin
           });
-        case 8:
+        case 15:
         case "end":
           return _context21.stop();
       }
