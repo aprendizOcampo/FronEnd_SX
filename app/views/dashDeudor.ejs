@@ -13,7 +13,7 @@
       <div class="box-header with-border">
         <h3>Tus Deudores</h3>
         <h4 class="text-muted">Aquí puedes ver, modificar y agregar personas que tengan deudas con tu empresa</h4>
-        <a type="button" href="/crear-pago"><i class="fa fa-pencil-square-o btn btn-primary btn-lg"> Agregar Deudor</i></a>
+        <a type="button" href="/administrador/crear-pago"><i class="fa fa-pencil-square-o btn btn-primary btn-lg"> Agregar Deudor</i></a>
       </div>
       <div>
         <!-- Tabla de información de los pagos pendientes -->
@@ -35,8 +35,10 @@
                 <td><%= element.email%></td>
                 <td><%= element.telefono%></td>
                 <td>
-                  <a type="button" href="/modificar-pago"><i class="fa fa-edit btn btn-warning "> Modificar Pago Pendiente</i></a>
-                  <a type="button" onclick="eliminarPagoPendiente('<%= element.ID %>')"><i class="fa fa-trash btn btn-danger"> Borrar Pago Pendiente</i></a>
+                  <a type="button" href="/administrador/modificar-pago"><i class="fa fa-edit btn btn-warning "> 
+                    Modificar Pago Pendiente</i></a>
+                  <a type="button" href="/administrador/borrarDeudor?id=<%= element.id %> "><i class="fa fa-trash btn btn-danger"> 
+                    Borrar deudor</i></a>
                 </td>
               </tr>
               <% }); %>

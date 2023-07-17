@@ -1,11 +1,19 @@
-import mysql from 'mysql';
-const conexion = mysql.createConnection({
-  host: process.env.DB_HOST,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASS,
-  database: process.env.DB_DATABASE
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
 });
-conexion.connect(error => {
+exports["default"] = void 0;
+var _mysql = _interopRequireDefault(require("mysql"));
+var _config = _interopRequireDefault(require("../config.js"));
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+var conexion = _mysql["default"].createConnection({
+  host: _config["default"].host,
+  database: _config["default"].database,
+  user: _config["default"].user,
+  password: _config["default"].password
+});
+conexion.connect(function (error) {
   if (error) {
     console.log('El error de conexión es: ' + error);
     return;
@@ -13,7 +21,7 @@ conexion.connect(error => {
   console.log('¡Conectado a la base de datos MySQL!');
 
   // Seleccionar la base de datos antes de ejecutar consultas
-  conexion.query('USE proyecto_sinvex', error => {
+  conexion.query('USE proyecto_sinvex', function (error) {
     if (error) {
       console.log('Error al seleccionar la base de datos: ' + error);
       return;
@@ -21,4 +29,5 @@ conexion.connect(error => {
     console.log('Base de datos seleccionada: proyecto_sinvex');
   });
 });
-export default conexion;
+var _default = conexion;
+exports["default"] = _default;

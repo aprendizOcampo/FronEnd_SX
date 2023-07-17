@@ -14,27 +14,29 @@
             <h3>Agregar Nueva Compra</h3>
             <h4 class="text-muted">Aquí puedes agregar las compras que hayas realizado en tu empresa</h4>
           </div>
-          <!--Tabla de la pagina-->
-          <table id="" class="table table-bordered table-striped">
-            <thead>
-              <tr>
-                <th>valor</th>
-                <th>fecha</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><input type="number" class="form-control" id=""
-                    placeholder="Escriba la cedula de su cliente"></td>
-                <td><input type="date" class="form-control" id=""
+          <form action="/administrador/saveCompra" method="post">
+            <!--Tabla de la pagina-->
+            <table id="" class="table table-bordered table-striped">
+              <thead>
+                <tr>
+                  <th>valor</th>
+                  <th>fecha</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><input type="number" name="valor" class="form-control" id="bcompra" 
+                    placeholder="Escriba el valor de la compra">
+                  </td>
+                  <td><input type="date" name="fecha" class="form-control" id="bcompra" 
                     placeholder="Escriba la fecha de la compra"></td>
                 </tr>
-              </tr>
-              </tfoot>
-          </table>
-          <a type="button" href="#"><i class="fa fa-plus btn btn-success btn-lg"> Agregar Cliente</i></a>
-          <a type="button" href="/administrador/compra"><i class="fa fa-times btn btn-danger btn-lg "> Cancelar</i></a>
-          <!--/Tabla de la pagina-->
+                </tfoot>
+            </table>
+            <button type="submit" onclick="alert('compra creada');"><i class="fa fa-plus btn btn-success btn-lg"> crear compra</i></button> 
+            <a type="button" href="/administrador/compra"><i class="fa fa-times btn btn-danger btn-lg ">Cancelar</i></a>
+            <!--/Tabla de la pagina-->
+          </form>
         </div>
         <!-- /.content -->
     </div>

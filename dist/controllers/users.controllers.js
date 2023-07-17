@@ -85,3 +85,4 @@ export const isValidToken = (req, res, next) => {
         res.send({ "error": "El token es errado o ha caducado " })
     }
 } */
+"use strict";

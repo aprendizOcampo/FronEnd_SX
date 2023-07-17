@@ -11,9 +11,9 @@
 
     <div class="box">
       <div class="box-header with-border">
-        <h3>Tus Compras</h3>
-        <h4 class="text-muted">Aquí puedes registrar las compras que hagas para tu empresa</h4>
-        <a type="button" href="/administrador/crear-compra"><i class="fa fa-pencil-square-o btn btn-primary btn-lg"> Añadir Compra</i></a>
+        <h3>Tus Perdidas</h3>
+        <h4 class="text-muted">Aquí puedes registrar las perdidas que hayas tenido</h4>
+        <a type="button" href="/administrador/crear-perdida"><i class="fa fa-pencil-square-o btn btn-primary btn-lg"> Añadir Perdida</i></a>
       </div>
       <div>
         <table id="" class="table table-bordered table-striped">
@@ -25,12 +25,13 @@
           </tr>
           </thead>
           <tbody>
-            <% compra.forEach((element)=>{ %>
+            <% perdida.forEach((element)=>{ %>
               <tr>
-                <td><%= element.valor%></td>
+                <td>$<%= element.valor%></td>
                 <td><%= element.fecha%></td>
                 <td>
-                  <a type="button" href="/administrador/borrarCompra?id=<%= element.id %> "><i class="fa fa-trash btn btn-danger"> Borrar compra</i></a>
+                    <a type="button" href="/administrador/borrarPerdida?id=<%= element.id %> "><i class="fa fa-trash btn btn-danger"> 
+                        Borrar Perdida</i></a>
                 </td>
               </tr>
               <% }); %>
@@ -61,4 +62,3 @@
 </script>
 </body>
 </html>
-

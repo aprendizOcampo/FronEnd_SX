@@ -1,56 +1,65 @@
-import express from "express";
-import dotenv from "dotenv";
-import ejs from "ejs";
-import path from "path";
-import { fileURLToPath } from "url";
-import home from "./routes/homepage.routes.js";
-import cookieParser from "cookie-parser";
-import router from './routes/router.js';
-//import administrador from "./routes/loginAdmin.routes.js";
-//import vendedor from "./routes/loginVendedor.routes.js";
+"use strict";
 
-dotenv.config();
-const app = express();
-const __dirname = path.resolve();
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports["default"] = void 0;
+var _express = _interopRequireDefault(require("express"));
+var _dotenv = _interopRequireDefault(require("dotenv"));
+var _ejs = _interopRequireDefault(require("ejs"));
+var _path = _interopRequireDefault(require("path"));
+var _url = require("url");
+var _homepageRoutes = _interopRequireDefault(require("./routes/homepage.routes.js"));
+var _cookieParser = _interopRequireDefault(require("cookie-parser"));
+var _bodyParser = _interopRequireDefault(require("body-parser"));
+var _cors = _interopRequireDefault(require("cors"));
+var _loginAdminRoutes = _interopRequireDefault(require("./routes/loginAdmin.routes.js"));
+var _loginVendedorRoutes = _interopRequireDefault(require("./routes/loginVendedor.routes.js"));
+var _loginRoutes = _interopRequireDefault(require("./routes/login.routes.js"));
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+//rutas del login
+
+_dotenv["default"].config();
+var app = (0, _express["default"])();
+var _filename = (0, _url.fileURLToPath)(import.meta.url);
+var _dirname = _path["default"].dirname(_filename);
 
 //Configuración
-app.set("port", process.env.PORT);
 app.set("view engine", "ejs");
-app.set("views", path.resolve(path.join(__dirname, "app", "views")));
+app.set("views", _path["default"].resolve(_path["default"].join(_dirname, "views")));
 
 //middleware
-app.use(express.static("./public"));
+app.use(_express["default"]["static"]("./public"));
 
 //sirve para procesar datos desde forms
-app.use(express.urlencoded({
+app.use(_express["default"].urlencoded({
   extended: true
 }));
-app.use(express.json());
+app.use(_express["default"].json());
+app.use((0, _cors["default"])());
 
 //funciona para poder usar las cookies
-dotenv.config({
+_dotenv["default"].config({
   path: '../env'
 });
-app.use(cookieParser());
+app.use((0, _cookieParser["default"])());
 
 //settings
-app.set("PORT", process.env.PORT || 10000);
+app.set("port", process.env.PORT || 10000);
 
 //Routes
-app.use("/", home);
-//app.use('/', router);
-//app.use("/Inicio", admnistrador);
-//app.use("/menu-vendedor", vendedor);
-
-app.use((req, res, next) => {
+app.use("/", _loginRoutes["default"]);
+app.use("/", _homepageRoutes["default"]);
+app.use("/administrador", _loginAdminRoutes["default"]);
+app.use("/vendedor", _loginVendedorRoutes["default"]);
+app.use(function (req, res, next) {
   if (!req.user) res.header('Cache-Control', 'private, no-cache, no-store, must-revalidate');
   next();
 });
-
-//app.use ("/v1/dash", dash);
-app.get('/', (req, res) => {
+app.get('/', function (req, res) {
   res.send({
     message: 'Bienvenido a mi app'
   });
 });
-export default app;
+var _default = app;
+exports["default"] = _default;

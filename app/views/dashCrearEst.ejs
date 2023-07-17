@@ -14,26 +14,26 @@
             <h3>Crear Nueva Estanteria</h3>
             <h4 class="text-muted">Aquí puedes crear una estanteria nueva</h4>
           </div>
-          <!--Tabla de la pagina-->
-          <table id="" class="table table-bordered table-striped">
-            <thead>
-              <tr>
-                <th>Nombre</th>
-                <th>Descripción</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><input type="text" class="form-control" id=""
-                    placeholder="Escriba el nombre de su estanteria"></td>
-                <td><input type="text" class="form-control" id=""
-                    placeholder="Escriba los productos que hay en su estanteria"></td>
-              </tr>
-              </tfoot>
-          </table>
-          <a type="button" href="#"><i class="fa fa-plus btn btn-success btn-lg"> Agregar Estanteria</i></a>
-          <a type="button" href="/estanteria"><i class="fa fa-times btn btn-danger btn-lg "> Cancelar</i></a>
-          <!--/Tabla de la pagina-->
+          <form action="saveEstanteria" method="post">
+            <!--Tabla de la pagina-->
+            <table id="" class="table table-bordered table-striped">
+              <thead>
+                <tr>
+                  <th>Nombre</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><input type="text" class="form-control" id="" name="nombre" 
+                    placeholder="Escriba el nombre de su estanteria">
+                  </td>
+                </tr>
+                </tfoot>
+            </table>
+            <button type="submit"><i class="fa fa-plus btn btn-success btn-lg"> Agregar Estanteria</i></button>
+            <a type="button" href="/administrador/estanteria"><i class="fa fa-times btn btn-danger btn-lg "> Cancelar</i></a>
+            <!--/Tabla de la pagina-->
+          </form>
         </div>
         <!-- /.content -->
     </div>

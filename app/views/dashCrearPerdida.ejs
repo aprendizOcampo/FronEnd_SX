@@ -1,4 +1,4 @@
-<!--Pagina para crear producto-->
+<!--Pagina para crear estanteria, ligada a la tabla estanteria-->
 <html>
 <%- include('partials/dashmenu.ejs'); %>
 
@@ -11,41 +11,35 @@
 
         <div class="box">
           <div class="box-header with-border">
-            <h3>Agregar Nueva Compra</h3>
-            <h4 class="text-muted">Aquí puedes agregar las compras que hayas realizado en tu empresa</h4>
+            <h3>Crear Nueva Perdida</h3>
+            <h4 class="text-muted">Aquí puedes añadir tus perdidas nuevas</h4>
           </div>
-          <!--Tabla de la pagina-->
-          <form id="crearClienteForm" action="/administrador/saveCliente" method="post">
+          <form action="savePerdida" method="post">
+            <!--Tabla de la pagina-->
             <table id="" class="table table-bordered table-striped">
               <thead>
+                  <form action="/administrador/saveEmpresa" method="post">
                 <tr>
-                  <th>cedula del cliente</th>
-                  <th>nombres</th>
-                  <th>apellidos</th>
-                  <th>direccion</th>
+                  <th>Fecha</th>
+                  <th>Valor</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td><input type="number" name="cedula" class="form-control" id=""
-                      placeholder="Escriba la cedula de su cliente"></td>
-                  <td><input type="text" name="nombres" class="form-control" id=""
-                      placeholder="Escriba los nombres de su cliente"></td>
-                  <td><input type="text" name="apellidos" class="form-control" id="" 
-                    placeholder="Escriba los apellidos de su cliente"></td>
-                  <td><input type="text" name="direccion" class="form-control" id="" 
-                    placeholder="Escriba la direccion de su cliente">
+                  <td><input type="date" class="form-control" id="" name="fecha" 
+                    placeholder="Escriba la fecha">
                   </td>
-                </tr>
+                  <td><input type="number" class="form-control" id="" name="valor" 
+                    placeholder="Escriba el valor">
+                  </td>
                 </tr>
                 </tfoot>
             </table>
-            <button type="submit"><i class="fa fa-plus btn btn-success btn-lg"> Agregar Cliente</i></button>
-            <a type="button" href="/administrador/clientes"><i class="fa fa-times btn btn-danger btn-lg ">
-                Cancelar</i></a>
+            <button type="submit"><i class="fa fa-plus btn btn-success btn-lg"> Agregar Perdida</i></button>
+            <a type="button" href="/administrador/estanteria"><i class="fa fa-times btn btn-danger btn-lg "> Cancelar</i></a>
             <!--/Tabla de la pagina-->
+          </form>
         </div>
-        </form>
         <!-- /.content -->
     </div>
 

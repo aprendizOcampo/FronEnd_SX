@@ -30,29 +30,13 @@ usarla en otro tipo de informes-->
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-
+                <% libro.forEach((libro) => { %>
+                  <tr>
+                    <td> <%= libro.fecha %> </td>
+                    <td> <%= libro.tipo_accion %> </td>
+                    <td> <%= libro.Valor %> </td>
+                  </tr>
+                <% }) %>
                 </tfoot>
             </table>
           </div>

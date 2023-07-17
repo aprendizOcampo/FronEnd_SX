@@ -15,15 +15,12 @@
             <h3>Sección de ventas</h3>
             <h4 class="text-muted">Aquí puedes realizar las ventas que necesites hacer</h4>
           </div>
-          <!-- Boton -->
-          <a type="button" href="#"><i class="fa fa-pencil-square-o btn btn-primary btn-lg "> Agregar campos de
-              productos</i></a>
-          <!-- /Boton -->
 
           <!-- Tabla de toma de pedido con inputs y form-control -->
           <table id="" class="table table-bordered table-striped">
             <thead>
               <tr>
+                <th>Fecha</th>
                 <th>Producto</th>
                 <th>Precio</th>
                 <th>Cantidad</th>
@@ -32,88 +29,27 @@
             </thead>
             <tbody>
               <tr>
-                <td><select class="form-control">
-                    <option>Aguacate</option>
-                    <option>Champiñones</option>
-                    <option>Fresas</option>
-                    <option>Cocacola</option>
-                    <option>Arepas</option>
-                  </select></td>
-                <td><input class="form-control" id="disabledInput" type="text" placeholder="Precio Unitario" disabled>
+                <form action="/vendedor/saveVenta" method="post">
+                <td><input class="form-control" name="fecha" type="date" placeholder="Escriba el precio unitario">
+                  </td>
+                <td><input class="form-control" type="text" placeholder="Ecriba el producto">
                 </td>
-                <td><input type="text" class="form-control" id="bProducto"
-                    placeholder="Escriba la cantidad de productos"></td>
-                <td><input type="text" class="form-control" id="bProducto" placeholder="Escriba el nombre del cliente">
+                <td><input class="form-control" name="precio" type="text" placeholder="Escriba el precio unitario">
                 </td>
-              </tr>
-              <tr>
-                <td><select class="form-control">
-                    <option>Aguacate</option>
-                    <option>Champiñones</option>
-                    <option>Fresas</option>
-                    <option>Cocacola</option>
-                    <option>Arepas</option>
-                  </select></td>
-                <td><input class="form-control" id="disabledInput" type="text" placeholder="Precio Unitario" disabled>
                 </td>
-                <td><input type="text" class="form-control" id="bProducto"
-                    placeholder="Escriba la cantidad de productos"></td>
-                <td><input type="text" class="form-control" id="bProducto" placeholder="Escriba el nombre del cliente">
-                </td>
+                 </tfoot>
+                 <td><input type="text" name="cantidad" class="form-control" placeholder="Escriba la cantidad de productos"></td>
+                 <td><input type="text" class="form-control" placeholder="Escriba el nombre del cliente">
               </tr>
 
-              <tr>
-                <td><select class="form-control">
-                    <option>Aguacate</option>
-                    <option>Champiñones</option>
-                    <option>Fresas</option>
-                    <option>Cocacola</option>
-                    <option>Arepas</option>
-                  </select></td>
-                <td><input class="form-control" id="disabledInput" type="text" placeholder="Precio Unitario" disabled>
-                </td>
-                <td><input type="text" class="form-control" id="bProducto"
-                    placeholder="Escriba la cantidad de productos"></td>
-                <td><input type="text" class="form-control" id="bProducto" placeholder="Escriba el nombre del cliente">
-                </td>
-              </tr>
-              </tfoot>
           </table>
           <!-- /Tabla con inputs y form-control -->
         </div>
-        <!-- Boton -->
-        <a type="button" href="#"><i class="fa fa-check btn btn-primary btn-lg "> Continuar</i>
-          <!-- /Boton -->
-
-
-          <div class="box">
-            <div class="box-header with-border">
-              <h3>Realizar Venta</h3>
-            </div>
-
-            <!-- Tabla para vender los productos -->
-            <table id="" class="table table-bordered table-striped">
-              <thead>
-                <tr>
-                  <th>Nombre del cliente</th>
-                  <th>Total</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><input type="text" class="form-control" id="bProducto"
-                      placeholder="Escriba el nombre del cliente"></td>
-                  <td><input class="form-control" id="disabledInput" type="text" placeholder="Valor total" disabled>
-                  </td>
-                </tr>
-                </tfoot>
-            </table>
-            <!-- /Tabla para vender los productos -->
-          </div>
           <!-- Botones -->
-          <a type="button" href="#"><i class="fa fa-plus btn btn-success btn-lg fa fa-usd"> Realizar Venta</i></a>
+           <button type="submit"><i class="fa fa-usd btn btn-success btn-lg"> Realizar venta</i></button>
           <a type="button" href="/vendedor/menu-vendedor"><i class="fa fa-trash-o btn btn-danger btn-lg "> Cancelar</i></a>
           <!-- /Botones -->
+        </form>
     </div>
 
 

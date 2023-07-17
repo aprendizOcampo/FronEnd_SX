@@ -16,7 +16,6 @@ Esta calculadora es solo del usuario administrador-->
             <h4 class="text-muted">Esta es la calculadora de la aplicación, puedes volver a usar una ecuación si lo
               necesitas</h4>
           </div>
-          <form id="crearCalculoForm" action="/administrador/saveCalculo" method="post">
           <div class="row">
           </div>
           <div class="row">
@@ -82,7 +81,7 @@ Esta calculadora es solo del usuario administrador-->
                       <button class="btn btn-default" onclick="l('0')">0</button>
                     </div>
                     <div class="btn-group" role="group">
-                      <button type="submit" class="btn btn-default" onclick="h()">=</button>
+                      <button class="btn btn-default" onclick="h()">=</button>
                     </div>
                     <div class="btn-group" role="group">
                       <button class="btn btn-default" onclick="l('-')">-</button>
@@ -101,15 +100,12 @@ Esta calculadora es solo del usuario administrador-->
               <thead>
                 <tr>
                   <th>Historial de calculos</th>
-                  <th>Acciones</th>
                 </tr>
               </thead>
               <tbody>
                 <% calculo.forEach((element) => { %>
                 <tr>
                   <td><%= element.calculo %></td>
-                    <a type="button" href="/administrador/borrarCalculo?id=<%= element.id %> "><i class="fa fa-times-circle-o btn btn-danger ">Eliminar</i></a>
-                  </td>
                 </tr>
                 <% }); %>
                 </tfoot>

@@ -13,7 +13,7 @@
       <div class="box-header with-border">
         <h3>Estanterías</h3>
         <h4 class="text-muted">Aquí están tus estanterías y los productos que contienen</h4>
-        <a type="button" href="/crear-estanteria"><i class="fa fa-pencil-square-o btn btn-primary btn-lg"> Agregar Nueva Estantería</i></a>
+        <a type="button" href="/administrador/crear-estanteria"><i class="fa fa-pencil-square-o btn btn-primary btn-lg"> Agregar Nueva Estantería</i></a>
       </div>
       <div>
         <table id="" class="table table-bordered table-striped">
@@ -26,11 +26,11 @@
           </thead>
           <tbody>
             <% estanteria.forEach((element)=>{ %>
-                <td></td>
+                <td><%= element.id %></td>
                 <td><%= element.nombre%></td>
                 <td>
                   <a type="button" href="/modificar-estanteria"><i class="fa fa-edit btn btn-warning "> Modificar Estanteria</i></a>
-                  <a type="button" onclick="eliminarEstanteria('<%= element.ID %>')"><i class="fa fa-trash btn btn-danger"> Borrar Estanteria</i></a>
+                  <a type="button" href="/administrador/borrarEstanteria?id=<%= element.id %> "><i class="fa fa-trash btn btn-danger"> Borrar estanteria</i></a>
                 </td>
               </tr>
               <% }); %>

@@ -20,6 +20,12 @@ administrador.get("/", (req, res) => {
   res.redirect("/administrador/menu-inicio");
 });
 
+administrador.get("/crear-estanteria", (req, res) => {
+  res.render("dashCrearEst", {
+    title: "Crear Estantería"
+  });
+});
+
 administrador.get("/crear-usuario", authController.isAuthenticated, (req, res) => {
   res.render("crearUsV", { title: "Crear Usuario Vendedor" });
 })
@@ -28,17 +34,6 @@ administrador.get("/modificar-vendedor", authController.isAuthenticated, (req, r
   res.render("modUsuarioV", { title: "Modificar vendedor" });
 })
 
-administrador.get("/contabilidad", authController.isAuthenticated, async (req, res) => {
-
-  let rutaLibroMayor = process.env.API + '/libroMayor'
-  const resultLibroMayor = await fetch(rutaLibroMayor)
-  const libro = await resultLibroMayor.json();
-
-  res.render("dashCont", {
-    title: "Contabilidad",
-    libro: libro
-  });
-})
 //cliente
 administrador.get("/Clientes", authController.isAuthenticated, async (req, res) => {
 
@@ -55,24 +50,6 @@ administrador.get("/Clientes", authController.isAuthenticated, async (req, res) 
 administrador.get("/crear-cliente", authController.isAuthenticated, (req, res) => {
   res.render("dashCrearCliente", {
     title: "Crear Cliente"
-  });
-});
-
-administrador.get("/empresa", authController.isAuthenticated, async (req, res) => {
-
-  let rutaEmpresa = process.env.API + '/empresa'
-  const resultEmpresa = await fetch(rutaEmpresa)
-  const empresa = await resultEmpresa.json();
-
-  res.render("dashEmpresa", {
-    title: "Tu Empresa",
-    empresa: empresa
-  });
-});
-
-administrador.get("/crear-empresa", authController.isAuthenticated, (req, res) => {
-  res.render("dashCrearEmpresa", {
-    title: "Crear Empresa"
   });
 });
 
@@ -94,69 +71,6 @@ administrador.get("/crear-cliente", authController.isAuthenticated, (req, res) =
   });
 });
 
-administrador.post("/saveCalculo", async (req, res) => {
-  const { calculo } = req.body;
-  let datos = {
-    calculo: calculo
-  }
-  try {
-    let metodo = 'post';
-    const url = process.env.API + "/historialCalculos";
-    if (req.body.id) {
-      const id = req.body.id;
-      metodo = "put"
-      datos = {
-        calculo: calculo
-      }
-      console.log("se ejecuto el put")
-    }
-    const options = {
-      method: metodo,
-      body: JSON.stringify(datos),
-      headers: {
-        "Content-Type": "application/json"
-      }
-    };
-
-    const response = await fetch(url, options);
-    const data = await response.json();
-
-    if (data.message === "cliente añadido exitosamente") {
-      console.log("El cliente ha sido añadido a la base de datos");
-    } else {
-      console.log("La base de datos no insertó los datos");
-    }
-  } catch (error) {
-    console.log("Error al insertar el cliente:", error);
-  }
-
-  res.redirect('Calculadora')
-
-});
-
-administrador.get("/borrarCalculo", async (req, res) => {
-  try {
-    const id = req.query.id;
-    const url = process.env.API + `historialCalculos/${id}`;
-    const options = {
-      method: "DELETE",
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    };
-
-    const response = await fetch(url, options);
-    const data = await response.json();
-
-    if (data.affectedRows > 0) {
-      console.log("Registro borrado");
-    }
-  } catch (error) {
-    console.log("Error al borrar el registro:", error);
-  }
-  res.redirect('calculadora')
-});
-
 administrador.get("/ventas-diarias", authController.isAuthenticated, async (req, res) => {
 
   let rutaVentas = process.env.API + '/venta'
@@ -169,51 +83,28 @@ administrador.get("/ventas-diarias", authController.isAuthenticated, async (req,
   });
 });
 
-administrador.get("/estanteria", authController.isAuthenticated, async (req, res) => {
-
-  let rutaEstanteria = process.env.API + '/estanteria'
-  const resultEstanteria = await fetch(rutaEstanteria)
-  const estanteria = await resultEstanteria.json();
-
-  res.render("dashEstant", {
-    title: "Estanteria",
-    estanteria: estanteria
-  });
-})
-
 administrador.get("/reportes-vendedores", authController.isAuthenticated, (req, res) => {
   res.render("reporUsuV", {
     title: "Reportes"
   });
 });
 
-administrador.get("/compra", authController.isAuthenticated, async (req, res) => {
-
-  let rutaCompra = process.env.API + '/compra'
-  const resultCompra = await fetch(rutaCompra)
-  const compra = await resultCompra.json();
-
-  res.render("dashCompra", {
-    title: "Tus Compras",
-    compra: compra
-  });
-})
-
 administrador.get("/crear-compra", authController.isAuthenticated, (req, res) => {
   res.render("dashCrearCompra", { title: "Crear Compra" });
 })
 
-administrador.get("/deudor", authController.isAuthenticated, async (req, res) => {
+administrador.get("/perdidas", authController.isAuthenticated, async (req, res) => {
 
-  let rutaDeudor = process.env.API + '/deudores'
-  const resultDeudor = await fetch(rutaDeudor)
-  const deudor = await resultDeudor.json();
+  let rutaPerdida = process.env.API + '/perdidas'
+  const resultPerdida = await fetch(rutaPerdida)
+  const perdida = await resultPerdida.json();
 
-  res.render("dashDeudor", {
-    title: "Deudores",
-    deudor: deudor
+
+  res.render("dashPerdida", {
+    title: "Perdidas",
+    perdida: perdida
   });
-})
+});
 
 administrador.get("/facturas", authController.isAuthenticated, async (req, res) => {
 
@@ -257,6 +148,10 @@ administrador.get("/modificar-contacto/:id", authController.isAuthenticated, asy
 
 administrador.get("/crear-contacto", authController.isAuthenticated, (req, res) => {
   res.render("crearContacto", { title: "Crear Contacto" });
+})
+
+administrador.get("/crear-perdida", authController.isAuthenticated, (req, res) => {
+  res.render("dashCrearPerdida", { title: "Crear Perdida" });
 })
 
 administrador.get("/informes", authController.isAuthenticated, (req, res) => {
@@ -340,10 +235,10 @@ administrador.post("/saveContacto", async (req, res) => {
     const response = await fetch(url, options);
     const data = await response.json();
 
-    if (data.message === "proveedor añadido exitosamente") {
+    if (data.message === "contacto añadido exitosamente") {
       console.log("El contacto ha sido añadido a la base de datos");
     } else {
-      console.log("La base de datos no insertó los datos");
+      console.log("contacto insertado");
     }
   } catch (error) {
     console.log("Error al insertar el contacto:", error);
@@ -712,31 +607,48 @@ administrador.get("/borrarPago", async (req, res) => {
     const data = await response.json();
 
     if (data.affectedRows > 0) {
-      console.log("Registro borrado");
+      console.log("deuda borrada");
     }
   } catch (error) {
-    console.log("Error al borrar el registro:", error);
+    console.log("Error al borrar la deuda:", error);
   }
-  res.redirect('Pagos Pendientes')
+  res.redirect('Pagos-Pendientes')
 });
 
-administrador.post("/saveEmpresa", async (req, res) => {
-  const { NIT_empresa, direccion_empresa, nombre } = req.body;
+//libro mayor crud
+
+//get libro m
+administrador.get("/contabilidad", authController.isAuthenticated, async (req, res) => {
+
+  let rutaLibroMayor = process.env.API + '/libroMayor'
+  const resultLibroMayor = await fetch(rutaLibroMayor)
+  const libro = await resultLibroMayor.json();
+
+  res.render("dashCont", {
+    title: "Contabilidad",
+    libro: libro
+  });
+})
+
+//post librom
+
+administrador.post("/saveLibroM", async (req, res) => {
+  const { fecha, tipo_accion, valor } = req.body;
   let datos = {
-    NIT_empresa: NIT_empresa,
-    direccion_empresa: direccion_empresa,
-    nombre: nombre
+    valor: valor,
+    tipo_accion: tipo_accion,
+    fecha: fecha
   }
   try {
     let metodo = 'post';
-    const url = process.env.API + "/empresa";
+    const url = process.env.API + "/libromayor";
     if (req.body.id) {
       const id = req.body.id;
       metodo = "put"
       datos = {
-        NIT_empresa: NIT_empresa,
-        direccion_empresa: direccion_empresa,
-        nombre: nombre
+        valor: valor,
+        tipo_accion: tipo_accion,
+        fecha: fecha
       }
       console.log("se ejecuto el put")
     }
@@ -751,23 +663,25 @@ administrador.post("/saveEmpresa", async (req, res) => {
     const response = await fetch(url, options);
     const data = await response.json();
 
-    if (data.message === "empresa añadida exitosamente") {
-      console.log("La empresa a sido añadida a la base de datos");
+    if (data.message === "registro añadido exitosamente") {
+      console.log("el registro ha sido añadido a la base de datos");
     } else {
       console.log("La base de datos no insertó los datos");
     }
   } catch (error) {
-    console.log("Error al insertar la empresa:", error);
+    console.log("Error al insertar el registro: ", error);
   }
 
-  res.redirect('empresa')
+  res.redirect('contabilidad')
 
 });
 
-administrador.get("/borrarEmpresa", async (req, res) => {
+//delete librom
+
+administrador.get("/borrarLibroM", async (req, res) => {
   try {
     const id = req.query.id;
-    const url = process.env.API + `/empresa/${id}`;
+    const url = process.env.API + `/libromayor/${id}`;
     const options = {
       method: "DELETE",
       headers: {
@@ -784,8 +698,536 @@ administrador.get("/borrarEmpresa", async (req, res) => {
   } catch (error) {
     console.log("Error al borrar el registro:", error);
   }
+  res.redirect('contabilidad')
+});
+
+//crud compra
+
+//get compra
+
+administrador.get("/compra", authController.isAuthenticated, async (req, res) => {
+
+  let rutaCompra = process.env.API + '/compra'
+  const resultCompra = await fetch(rutaCompra)
+  const compra = await resultCompra.json();
+
+  res.render("dashCompra", {
+    title: "Tus Compras",
+    compra: compra
+  });
+})
+
+//post compra
+
+administrador.post("/saveCompra", async (req, res) => {
+  const { fecha, valor } = req.body;
+  let datos = {
+    fecha: fecha,
+    valor: valor
+
+  }
+  try {
+    let metodo = 'post';
+    const url = process.env.API + "/compra";
+    if (req.body.id) {
+      const id = req.body.id;
+      metodo = "put"
+      datos = {
+        fecha: fecha,
+        valor: valor
+      }
+      console.log("se ejecuto el put")
+    }
+    const options = {
+      method: metodo,
+      body: JSON.stringify(datos),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    };
+
+    const response = await fetch(url, options);
+    const data = await response.json();
+
+    if (data.message === "compra añadida exitosamente") {
+      console.log("la compra ha sido añadido a la base de datos");
+    } else {
+      console.log("La base de datos no insertó los datos");
+    }
+  } catch (error) {
+    console.log("Error al insertar la compra: ", error);
+  }
+
+  res.redirect('compra')
+
+});
+
+
+//delete compra
+
+administrador.get("/borrarCompra", async (req, res) => {
+  try {
+    const id = req.query.id;
+    const url = process.env.API + `/compra/${id}`;
+    const options = {
+      method: "DELETE",
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    };
+
+    const response = await fetch(url, options);
+    const data = await response.json();
+
+    if (data.affectedRows > 0) {
+      console.log("compra borrado");
+    }
+  } catch (error) {
+    console.log("Error al borrar la compra:", error);
+  }
+  res.redirect('compra')
+});
+
+//crud empresa
+
+//get empresa
+administrador.get("/empresa", authController.isAuthenticated, async (req, res) => {
+
+  let rutaEmpresa = process.env.API + '/empresa'
+  const resultEmpresa = await fetch(rutaEmpresa)
+  const empresa = await resultEmpresa.json();
+
+  res.render("dashEmpresa", {
+    title: "Tu Empresa",
+    empresa: empresa
+  });
+});
+
+//post empresa
+
+administrador.post("/saveEmpresa", async (req, res) => {
+  const { NIT_empresa, direccion_empresa, nombre } = req.body;
+  let datos = {
+    nombre: nombre,
+    NIT_empresa: NIT_empresa,
+    direccion_empresa: direccion_empresa
+
+  }
+  try {
+    let metodo = 'post';
+    const url = process.env.API + "/empresa";
+    if (req.body.id) {
+      const id = req.body.id;
+      metodo = "put"
+      datos = {
+        nombre: nombre,
+        NIT_empresa: NIT_empresa,
+        direccion_empresa: direccion_empresa
+      }
+      console.log("se ejecuto el put")
+    }
+    const options = {
+      method: metodo,
+      body: JSON.stringify(datos),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    };
+
+    const response = await fetch(url, options);
+    const data = await response.json();
+
+    if (data.message === "compra añadida exitosamente") {
+      console.log("su empresa ha sido añadido a la base de datos");
+    } else {
+      console.log("La base de datos no insertó los datos");
+    }
+  } catch (error) {
+    console.log("Error al insertar la empresa: ", error);
+  }
+
+  res.redirect('empresa')
+
+});
+
+
+//delete empresa
+
+administrador.get("/borrarEmpresa", async (req, res) => {
+  try {
+    const id = req.query.id;
+    const url = process.env.API + `/empresa/${id}`;
+    const options = {
+      method: "DELETE",
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    };
+
+    const response = await fetch(url, options);
+    const data = await response.json();
+
+    if (data.affectedRows > 0) {
+      console.log("compra borrado");
+    }
+  } catch (error) {
+    console.log("Error al borrar la empresa:", error);
+  }
   res.redirect('empresa')
 });
+
+
+//añadir a empresa la vista para crearla
+
+//crud deudor
+//get deudor
+administrador.get("/deudor", authController.isAuthenticated, async (req, res) => {
+
+  let rutaDeudor = process.env.API + '/deudores'
+  const resultDeudor = await fetch(rutaDeudor)
+  const deudor = await resultDeudor.json();
+
+  res.render("dashDeudor", {
+    title: "Deudores",
+    deudor: deudor
+  });
+})
+
+//post deudor
+
+administrador.post("/saveDeudor", async (req, res) => {
+  const { nombres, apellidos, email, telefono } = req.body;
+  let datos = {
+    nombres: nombres,
+    apellidos: apellidos,
+    email: email,
+    telefono: telefono
+
+  }
+  try {
+    let metodo = 'post';
+    const url = process.env.API + "/deudores";
+    if (req.body.id) {
+      const id = req.body.id;
+      metodo = "put"
+      datos = {
+        nombres: nombres,
+        apellidos: apellidos,
+        email: email,
+        telefono: telefono
+      }
+      console.log("se ejecuto el put")
+    }
+    const options = {
+      method: metodo,
+      body: JSON.stringify(datos),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    };
+
+    const response = await fetch(url, options);
+    const data = await response.json();
+
+    if (data.message === "deudor añadido exitosamente") {
+      console.log("el deudor ha sido añadido a la base de datos");
+    } else {
+      console.log("La base de datos no insertó los datos");
+    }
+  } catch (error) {
+    console.log("Error al insertar el deudor: ", error);
+  }
+
+  res.redirect('deudor')
+
+});
+
+
+//delete deudor
+
+administrador.get("/borrarDeudor", async (req, res) => {
+  try {
+    const id = req.query.id;
+    const url = process.env.API + `/deudores/${id}`;
+    const options = {
+      method: "DELETE",
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    };
+
+    const response = await fetch(url, options);
+    const data = await response.json();
+
+    if (data.affectedRows > 0) {
+      console.log("compra borrado");
+    }
+  } catch (error) {
+    console.log("Error al borrar la empresa:", error);
+  }
+  res.redirect('deudor')
+});
+
+//crud estanteria 
+//get
+administrador.get("/estanteria", authController.isAuthenticated, async (req, res) => {
+
+  let rutaEstanteria = process.env.API + '/estanteria'
+  const resultEstanteria = await fetch(rutaEstanteria)
+  const estanteria = await resultEstanteria.json();
+
+  res.render("dashEstant", {
+    title: "Estanteria",
+    estanteria: estanteria
+  });
+})
+
+//post 
+
+administrador.post("/saveEstanteria", async (req, res) => {
+  const { nombre } = req.body;
+  let datos = {
+    nombre: nombre
+  }
+  try {
+    let metodo = 'post';
+    const url = process.env.API + "/estanteria";
+    if (req.body.id) {
+      const id = req.body.id;
+      metodo = "put"
+      datos = {
+        id: id,
+        nombre: nombre,
+      }
+      console.log("se ejecuto el put")
+    }
+    const options = {
+      method: metodo,
+      body: JSON.stringify(datos),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    };
+
+    const response = await fetch(url, options);
+    const data = await response.json();
+
+    if (data.message === "estanteria añadida exitosamente") {
+      console.log("la estanteria ha sido añadido a la base de datos");
+    } else {
+      console.log("La base de datos no insertó los datos");
+    }
+  } catch (error) {
+    console.log("Error al insertar la estanteria:", error);
+  }
+
+  res.redirect('estanteria')
+
+});
+
+//delete contacto
+
+administrador.get("/borrarEstanteria", async (req, res) => {
+  try {
+    const id = req.query.id;
+    const url = process.env.API + `/estanteria/${id}`;
+    const options = {
+      method: "DELETE",
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    };
+
+    const response = await fetch(url, options);
+    const data = await response.json();
+
+    if (data.affectedRows > 0) {
+      console.log("Registro borrado");
+    }
+  } catch (error) {
+    console.log("Error al borrar el registro:", error);
+  }
+  res.redirect('estanteria')
+});
+
+//crud facturas
+//get
+administrador.get("/facturas", authController.isAuthenticated, async (req, res) => {
+
+  let rutaFactura = process.env.API + '/factura'
+  const resultFactura = await fetch(rutaFactura)
+  const factura = await resultFactura.json();
+
+  res.render("facturas", {
+    title: "Facturas",
+    factura: factura
+  });
+});
+
+//post
+administrador.post("/saveFacturas", async (req, res) => {
+  const { fecha } = req.body;
+  let datos = {
+    fecha: fecha
+  }
+  try {
+    let metodo = 'post';
+    const url = process.env.API + "/factura";
+    if (req.body.id) {
+      const id = req.body.id;
+      metodo = "put"
+      datos = {
+        id: id,
+        factura: factura,
+      }
+      console.log("se ejecuto el put")
+    }
+    const options = {
+      method: metodo,
+      body: JSON.stringify(datos),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    };
+
+    const response = await fetch(url, options);
+    const data = await response.json();
+
+    if (data.message === "factura añadida exitosamente") {
+      console.log("la factura ha sido añadido a la base de datos");
+    } else {
+      console.log("La base de datos no insertó los datos");
+    }
+  } catch (error) {
+    console.log("Error al insertar la factura: ", error);
+  }
+
+  res.redirect('facturas')
+
+});
+
+//delete contacto
+
+administrador.get("/borrarFacturas", async (req, res) => {
+  try {
+    const id = req.query.id;
+    const url = process.env.API + `/factura/${id}`;
+    const options = {
+      method: "DELETE",
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    };
+
+    const response = await fetch(url, options);
+    const data = await response.json();
+
+    if (data.affectedRows > 0) {
+      console.log("Registro borrado");
+    }
+  } catch (error) {
+    console.log("Error al borrar la factura:", error);
+  }
+  res.redirect('facturas')
+});
+
+//crear empresa
+
+administrador.get("/crear-empresa", authController.isAuthenticated, (req, res) => {
+  res.render("dashCrearEmpresa", {
+    title: "Crear Empresa"
+  });
+});
+
+administrador.get("/borrarPerdida", async (req, res) => {
+  try {
+    const id = req.query.id;
+    const url = process.env.API + `/perdidas/${id}`;
+    const options = {
+      method: "DELETE",
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    };
+
+    const response = await fetch(url, options);
+    const data = await response.json();
+
+    if (data.affectedRows > 0) {
+      console.log("Registro borrado");
+    }
+  } catch (error) {
+    console.log("Error al borrar el registro:", error);
+  }
+  res.redirect('perdidas')
+});
+
+administrador.get("/contactos", authController.isAuthenticated, async (req, res) => {
+
+  let rutaContacto = process.env.API + '/proveedor'
+  const resultContacto = await fetch(rutaContacto)
+  const contacto = await resultContacto.json();
+
+  res.render("contactos", {
+    title: "Contactos",
+    contacto: contacto
+  });
+});
+
+//post y put contacto
+administrador.post("/savePerdida", async (req, res) => {
+  const { fecha, valor } = req.body;
+  let datos = {
+    fecha: fecha,
+    valor: valor
+  }
+  try {
+    let metodo = 'post';
+    const url = process.env.API + "/perdidas";
+    if (req.body.id) {
+      const id = req.body.id;
+      metodo = "put"
+      datos = {
+        fecha: fecha,
+        valor: valor
+      }
+      console.log("se ejecuto el put")
+    }
+    const options = {
+      method: metodo,
+      body: JSON.stringify(datos),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    };
+
+    const response = await fetch(url, options);
+    const data = await response.json();
+
+    if (data.message === "contacto añadido exitosamente") {
+      console.log("El contacto ha sido añadido a la base de datos");
+    } else {
+      console.log("contacto insertado");
+    }
+  } catch (error) {
+    console.log("Error al insertar el contacto:", error);
+  }
+
+  res.redirect('perdidas')
+
+});
+
+administrador.get("/reporte-contabilidad", authController.isAuthenticated, async (req, res) => {
+
+  let rutaLibroMayor = process.env.API + '/libroMayor'
+  const resultLibroMayor = await fetch(rutaLibroMayor)
+  const libro = await resultLibroMayor.json();
+
+  res.render("contabilidadPDF", {
+    title: "reporte",
+    libro: libro
+  });
+})
 
 
 export default administrador;

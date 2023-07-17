@@ -100,16 +100,12 @@ Esta calculadora es solo del usuario vendedor-->
               <thead>
                 <tr>
                   <th>Historial de calculos</th>
-                  <th>Acciones</th>
                 </tr>
               </thead>
               <tbody>
                 <% calculadora.forEach((element)=>{ %>
                 <tr>
                   <td><%= element.calculo%></td>
-                  <td><a type="button" href="#"><i class="fa fa-undo btn btn-success "> Volver a usar</i></a>
-                    <a type="button" href="#"><i class="fa fa-times-circle-o btn btn-danger "> Eliminar</i></a>
-                  </td>
                   <% }); %>
                 </tr>
 

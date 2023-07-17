@@ -8,14 +8,64 @@
       <!-- Content Header (Page header) -->
       <%- include('partials/dashhead.ejs'); %>
 
+      <button id="download-button">Generate PDF</button>
+
+      <div id="renderizar">
+        <nav class="navbar navbar-expand-lg bg-header navbar-light shadow-sm py-3 py-lg-0 px-3 px-lg-0">
+            <!--Plantilla para informes. Se puede modificar para
+usarla en otro tipo de informes-->
+
+<%- include('partials/dashhead.ejs'); %>
+<div class="pull-left image">
+  <h3 class="pull-right"> SINVEX - Reporte de contabilidad </h3>
+</div>
+<div class="row">
+</div>
+<div class="row">
+  <div class="col-md-3">
+  </div>
+  <div class="col-md-5">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <h3>Reporte contable de la aplicación</h3>
+        <div>
+          <table id="" class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th>Fecha</th>
+                <th>Tipo</th>
+                <th>Valor</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% libro.forEach((libro) => { %>
+                <tr>
+                  <td> <%= libro.fecha %> </td>
+                  <td> <%= libro.tipo_accion %> </td>
+                  <td> <%= libro.valor %> </td>
+                </tr>
+              <% }) %>
+              </tfoot>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    </div>
+    <br>
+    <br>
 
         <div class="box">
           <div class="box-header with-border">
             <h3>Contabilidad</h3>
             <h4 class="text-muted">Esta es la area de contabilidad, agrega aquí las ventas y compras que hagas en forma
               de registro</h4>
-            <a type="button" href="#"><i class="fa fa-file-text btn btn-primary btn-lg"> Exportar información a
-                PDF</i></a>
+            <a type="button" href="#"><i class="fa fa-file-text btn btn-primary btn-lg"> 
+              Exportar información a PDF</i></a>
+
+
+
             <a type="button" href="/administrador/crear-registro"><i class="fa fa-pencil-square-o btn btn-primary btn-lg "> Agregar
                 nuevo registro</i></a>
           </div>
@@ -27,7 +77,7 @@
                   <th>FECHA</th>
                   <th>TIPO DE ACCION</th>
                   <th>VALOR</th>
-                  <th>USUARIO</th>
+                  <th>ACCIONES</th>
                 </tr>
               </thead>
               <tbody>
@@ -42,7 +92,9 @@
                     <td>
                       <%= element.valor%>
                     </td>
-                    <td></td>
+                    <td>
+                      <a type="button" href="/administrador/borrarLibroM?id=<%= element.id %> "><i class="fa fa-trash btn btn-danger"> Borrar Contacto</i></a>
+                    </td>
                   </tr>
                   <% }); %>
                     </tfoot>
@@ -69,6 +121,39 @@
       <script src="v1/../dist/js/demo.js"></script>
       </div>
       </script>
+
+      <%# Scripts %>
+      <script src="/js/html2pdf.js"></script>
+      <script>
+          // Obtener fecha actual
+          const fechaActual = new Date();
+          // Obtener componentes de la fecha
+          const year = fechaActual.getFullYear();
+          const month = fechaActual.getMonth() + 1;
+          const day = fechaActual.getDate();
+          const hours = fechaActual.getHours();
+          const minutes = fechaActual.getMinutes();
+          const seconds = fechaActual.getSeconds();
+  
+          // Botón para generar informe
+          const button = document.getElementById('download-button');
+  
+          function generatePDF() {
+              // Elemento que se convertira a pdf
+              const element = document.getElementById('renderizar');
+              // Designar nombre del archivo y guardarlo en el dispositivo
+              html2pdf().set({
+                  filename: `Reporte${day}-${month}-${year}_${hours}-${minutes}-${seconds}.pdf`,
+              }).from(element).save();
+  
+              //window.location.href = 'MisPaseos';
+          }
+  
+          // El botón para generar reporte
+          button.addEventListener('click', generatePDF);
+
+          </script>
+
   </body>
 
 </html>

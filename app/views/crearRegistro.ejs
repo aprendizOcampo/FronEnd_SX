@@ -17,33 +17,34 @@
                 registro</i></a>
           </div>
           <div>
-            <!--Tabla de la pagina-->
-            <table id="" class="table table-bordered table-striped">
-              <thead>
-                <tr>
-                  <th>FECHA</th>
-                  <th>TIPO DE ACCION</th>
-                  <th>VALOR</th>
-                  <th>USUARIO</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><input type="date" class="form-control" id=""
-                      placeholder="Escriba la fecha del registro"></td>
-                  <td><input type="text" class="form-control" id=""
-                      placeholder="Escriba el tipo de acción (ej. pago a proveedor)"></td>
-                      <td><input type="text" class="form-control" id=""
+            <form action="/administrador/saveLibroM" method="post">
+              <!--Tabla de la pagina-->
+              <table id="" class="table table-bordered table-striped">
+                <thead>
+                  <tr>
+                    <th>FECHA</th>
+                    <th>TIPO DE ACCION</th>
+                    <th>VALOR</th>
+                    <th>USUARIO</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><input type="date" name="fecha" class="form-control" id="" 
+                        placeholder="Escriba la fecha del registro"></td>
+                    <td><input type="text" name="tipo_accion" class="form-control" id=""
+                        placeholder="Escriba el tipo de acción (ej. pago a proveedor)"></td>
+                    <td><input type="text" name="valor" class="form-control" id=""
                         placeholder="Escriba el valor de la acción (ej. 100.000)"></td>
-                  <td><input type="text" class="form-control" id=""
-                      placeholder="Escriba el nombre del vendedor"></td>
-                </tr>
-                </tfoot>
-            </table>
-            <a type="button" href="#"><i class="fa fa-check btn btn-success btn-lg"> Guardar</i></a>
-            <a type="button" href="/contabilidad"><i class="fa fa-times btn btn-danger btn-lg "> Cancelar</i></a>
+                    <td><input type="text" class="form-control" id="" placeholder="Escriba el nombre del vendedor"></td>
+                  </tr>
+                  </tfoot>
+              </table>
+              <button type="submit" onclick="alert('registro creado');"><i class="fa fa-check btn btn-success btn-lg"> Guardar</i></button>
+              <a type="button" href="/administrador/contabilidad"><i class="fa fa-times btn btn-danger btn-lg "> Cancelar</i></a>
           </div>
           <!--/Tabla de la pagina-->
+          </form>
         </div>
 
         </section>
