@@ -16,12 +16,11 @@ import log from "./routes/login.routes.js";
 dotenv.config();
 
 const app = express();
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const __dirname = path.resolve();
 
 //Configuración
 app.set("view engine", "ejs");
-app.set("views", path.resolve(path.join(__dirname, "views")));
+app.set("views", path.resolve(path.join(__dirname, "app", "views")));
 
 //middleware
 app.use(express.static("./public"));

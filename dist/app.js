@@ -21,12 +21,11 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 
 _dotenv["default"].config();
 var app = (0, _express["default"])();
-var _filename = (0, _url.fileURLToPath)(import.meta.url);
-var _dirname = _path["default"].dirname(_filename);
+var _dirname = _path["default"].resolve();
 
 //Configuración
 app.set("view engine", "ejs");
-app.set("views", _path["default"].resolve(_path["default"].join(_dirname, "views")));
+app.set("views", _path["default"].resolve(_path["default"].join(_dirname, "app", "views")));
 
 //middleware
 app.use(_express["default"]["static"]("./public"));
