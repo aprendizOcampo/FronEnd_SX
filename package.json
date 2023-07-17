@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "set NODE_ENV=develop& nodemon index.js --exec babel-node",
     "build": "babel app --out-dir dist",
-    "start": "babel-node app/app.js",
+    "start": "babel-node dist/app.js",
     "install": "npm i -D @babel/plugin-transform-runtime"
   },
   "author": "",
