@@ -16,12 +16,12 @@ conexion.connect((error) => {
   console.log('¡Conectado a la base de datos MySQL!');
   
   // Seleccionar la base de datos antes de ejecutar consultas
-  conexion.query('USE proyecto_sinvex', (error) => {
+  conexion.query(`USE ${process.env.DB_DATABASE}`, (error) => {
     if (error) {
       console.log('Error al seleccionar la base de datos: ' + error);
       return;
     }
-    console.log('Base de datos seleccionada: proyecto_sinvex');
+    console.log('Base de datos seleccionada: ' + process.env.DB_DATABASE);
   });
 });
 
