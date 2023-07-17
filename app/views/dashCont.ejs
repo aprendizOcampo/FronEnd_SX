@@ -2,158 +2,165 @@
 <html>
 <%- include('partials/dashmenu.ejs'); %>
 
-  <body class="hold-transition skin-blue sidebar-mini">
-    <!-- Site wrapper -->
-    <div class="content-wrapper">
-      <!-- Content Header (Page header) -->
-      <%- include('partials/dashhead.ejs'); %>
-
-      <button id="download-button">Generate PDF</button>
-
-      <div id="renderizar">
-        <nav class="navbar navbar-expand-lg bg-header navbar-light shadow-sm py-3 py-lg-0 px-3 px-lg-0">
-            <!--Plantilla para informes. Se puede modificar para
+    <body class="hold-transition skin-blue sidebar-mini">
+        <!-- Site wrapper -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <%- include('partials/dashhead.ejs'); %>
+                <button id="download-button" class="btn btn-info btn-lg">Generar PDF</button>
+                <div id="renderizar">
+                    <nav class="navbar navbar-expand-lg bg-header navbar-light shadow-sm py-3 py-lg-0 px-3 px-lg-0">
+                        <!--Plantilla para informes. Se puede modificar para
 usarla en otro tipo de informes-->
 
-<%- include('partials/dashhead.ejs'); %>
-<div class="pull-left image">
-  <h3 class="pull-right"> SINVEX - Reporte de contabilidad </h3>
-</div>
-<div class="row">
-</div>
-<div class="row">
-  <div class="col-md-3">
-  </div>
-  <div class="col-md-5">
-    <div class="panel panel-default">
-      <div class="panel-body">
-        <h3>Reporte contable de la aplicación</h3>
-        <div>
-          <table id="" class="table table-bordered table-striped">
-            <thead>
-              <tr>
-                <th>Fecha</th>
-                <th>Tipo</th>
-                <th>Valor</th>
-              </tr>
-            </thead>
-            <tbody>
-              <% libro.forEach((libro) => { %>
-                <tr>
-                  <td> <%= libro.fecha %> </td>
-                  <td> <%= libro.tipo_accion %> </td>
-                  <td> <%= libro.valor %> </td>
-                </tr>
-              <% }) %>
-              </tfoot>
-          </table>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-    </div>
-    <br>
-    <br>
+                        <%- include('partials/dashhead.ejs'); %>
+                            <div class="row">
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="panel panel-default">
+                                        <div class="panel-body">
+                                            <div class="pull-left image">
+                                                <img src="/img/100px.png" class="img" alt="User Image">
+                                            </div>
+                                            <h3>Reporte contable de la aplicación</h3>
+                                            <div>
+                                                <table class="table table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Fecha</th>
+                                                            <th>Tipo</th>
+                                                            <th>Valor</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <% libro.forEach((libro) => { %>
+                                                            <tr>
+                                                                <td>
+                                                                    <%= libro.fecha %>
+                                                                </td>
+                                                                <td>
+                                                                    <%= libro.tipo_accion %>
+                                                                </td>
+                                                                <td>
+                                                                    <%= libro.valor %>
+                                                                </td>
+                                                            </tr>
+                                                            <% }) %>
+                                                                </tfoot>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="text-center">
+                                        <% admin.forEach((admin) => { %>
+                                            <p class="text" id="footerPdf">Generado por
 
-        <div class="box">
-          <div class="box-header with-border">
-            <h3>Contabilidad</h3>
-            <h4 class="text-muted">Esta es la area de contabilidad, agrega aquí las ventas y compras que hagas en forma
-              de registro</h4>
-            <a type="button" href="#"><i class="fa fa-file-text btn btn-primary btn-lg"> 
-              Exportar información a PDF</i></a>
+                                                <%= admin.usuario %> el dia </p>
+                                            <% }) %>
+                                    </div>
+                                </div>
+                            </div>
+                </div>
+                <br>
+
+                <div class="box">
+                    <div class="box-header with-border">
+                        <h3>Contabilidad</h3>
+                        <h4 class="text-muted">Esta es la area de contabilidad, agrega aquí las ventas y compras que hagas en forma de registro</h4>
 
 
-
-            <a type="button" href="/administrador/crear-registro"><i class="fa fa-pencil-square-o btn btn-primary btn-lg "> Agregar
+                        <a type="button" href="/administrador/crear-registro"><i class="fa fa-pencil-square-o btn btn-primary btn-lg "> Agregar
                 nuevo registro</i></a>
-          </div>
-          <div>
-            <!--Tabla de la pagina-->
-            <table id="" class="table table-bordered table-striped">
-              <thead>
-                <tr>
-                  <th>FECHA</th>
-                  <th>TIPO DE ACCION</th>
-                  <th>VALOR</th>
-                  <th>ACCIONES</th>
-                </tr>
-              </thead>
-              <tbody>
-                <% libro.forEach((element)=>{ %>
-                  <tr>
-                    <td>
-                      <%= element.fecha%>
-                    </td>
-                    <td>
-                      <%= element.tipo_accion%>
-                    </td>
-                    <td>
-                      <%= element.valor%>
-                    </td>
-                    <td>
-                      <a type="button" href="/administrador/borrarLibroM?id=<%= element.id %> "><i class="fa fa-trash btn btn-danger"> Borrar Contacto</i></a>
-                    </td>
-                  </tr>
-                  <% }); %>
-                    </tfoot>
-            </table>
-            <!--Tabla de la pagina-->
-          </div>
+                    </div>
+                    <div>
+                        <!--Tabla de la pagina-->
+                        <table id="" class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>FECHA</th>
+                                    <th>TIPO DE ACCION</th>
+                                    <th>VALOR</th>
+                                    <th>ACCIONES</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% libro.forEach((element)=>{ %>
+                                    <tr>
+                                        <td>
+                                            <%= element.fecha%>
+                                        </td>
+                                        <td>
+                                            <%= element.tipo_accion%>
+                                        </td>
+                                        <td>
+                                            <%= element.valor%>
+                                        </td>
+                                        <td>
+                                            <a type="button" href="/administrador/borrarLibroM?id=<%= element.id %> "><i class="fa fa-trash btn btn-danger"> Borrar Contacto</i></a>
+                                        </td>
+                                    </tr>
+                                    <% }); %>
+                                        </tfoot>
+                        </table>
+                        <!--Tabla de la pagina-->
+                    </div>
+                </div>
+                </section>
+                <!-- /.content -->
         </div>
-        </section>
-        <!-- /.content -->
-    </div>
 
-    <%- include('partials/dashfooter.ejs'); %>
-      <!-- jQuery 3 -->
-      <script src="v1/../bower_components/jquery/dist/jquery.min.js"></script>
-      <!-- Bootstrap 3.3.7 -->
-      <script src="v1/../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-      <!-- SlimScroll -->
-      <script src="v1/../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-      <!-- FastClick -->
-      <script src="v1/../bower_components/fastclick/lib/fastclick.js"></script>
-      <!-- AdminLTE App -->
-      <script src="v1/../dist/js/adminlte.min.js"></script>
-      <!-- AdminLTE for demo purposes -->
-      <script src="v1/../dist/js/demo.js"></script>
-      </div>
-      </script>
+        <%- include('partials/dashfooter.ejs'); %>
+            <!-- jQuery 3 -->
+            <script src="v1/../bower_components/jquery/dist/jquery.min.js"></script>
+            <!-- Bootstrap 3.3.7 -->
+            <script src="v1/../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+            <!-- SlimScroll -->
+            <script src="v1/../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+            <!-- FastClick -->
+            <script src="v1/../bower_components/fastclick/lib/fastclick.js"></script>
+            <!-- AdminLTE App -->
+            <script src="v1/../dist/js/adminlte.min.js"></script>
+            <!-- AdminLTE for demo purposes -->
+            <script src="v1/../dist/js/demo.js"></script>
+            </div>
+            </script>
 
-      <%# Scripts %>
-      <script src="/js/html2pdf.js"></script>
-      <script>
-          // Obtener fecha actual
-          const fechaActual = new Date();
-          // Obtener componentes de la fecha
-          const year = fechaActual.getFullYear();
-          const month = fechaActual.getMonth() + 1;
-          const day = fechaActual.getDate();
-          const hours = fechaActual.getHours();
-          const minutes = fechaActual.getMinutes();
-          const seconds = fechaActual.getSeconds();
-  
-          // Botón para generar informe
-          const button = document.getElementById('download-button');
-  
-          function generatePDF() {
-              // Elemento que se convertira a pdf
-              const element = document.getElementById('renderizar');
-              // Designar nombre del archivo y guardarlo en el dispositivo
-              html2pdf().set({
-                  filename: `Reporte${day}-${month}-${year}_${hours}-${minutes}-${seconds}.pdf`,
-              }).from(element).save();
-  
-              //window.location.href = 'MisPaseos';
-          }
-  
-          // El botón para generar reporte
-          button.addEventListener('click', generatePDF);
+            <%# Scripts %>
+                <script src="/js/html2pdf.js"></script>
+                <script>
+                    // Obtener fecha actual
+                    const fechaActual = new Date();
+                    // Obtener componentes de la fecha
+                    const year = fechaActual.getFullYear();
+                    const month = fechaActual.getMonth() + 1;
+                    const day = fechaActual.getDate();
+                    const hours = fechaActual.getHours();
+                    const minutes = fechaActual.getMinutes();
+                    const seconds = fechaActual.getSeconds();
 
-          </script>
+                    // Botón para generar informe
+                    const button = document.getElementById('download-button');
 
-  </body>
+                    function generatePDF() {
+                        // Elemento que se convertira a pdf
+                        const element = document.getElementById('renderizar');
+                        // Designar nombre del archivo y guardarlo en el dispositivo
+                        html2pdf().set({
+                            filename: `Reporte-Contable-SINVEX.pdf`,
+                        }).from(element).save();
+
+                        //window.location.href = 'MisPaseos';
+                    }
+                    const footer = document.getElementById('footerPdf');
+                    footer.innerHTML += ` ${fechaActual}`
+
+                    // El botón para generar reporte
+                    button.addEventListener('click', generatePDF);
+                </script>
+
+    </body>
 
 </html>
